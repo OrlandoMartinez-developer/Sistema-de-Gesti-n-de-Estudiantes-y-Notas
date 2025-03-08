@@ -28,35 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ConectarBD = new System.Windows.Forms.Button();
+            this.dgvEstudiantes = new System.Windows.Forms.DataGridView();
+            this.btnCargar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEstudiantes)).BeginInit();
             this.SuspendLayout();
             // 
-            // ConectarBD
+            // dgvEstudiantes
             // 
-            this.ConectarBD.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ConectarBD.Location = new System.Drawing.Point(301, 243);
-            this.ConectarBD.Name = "ConectarBD";
-            this.ConectarBD.Size = new System.Drawing.Size(134, 58);
-            this.ConectarBD.TabIndex = 0;
-            this.ConectarBD.Text = "Conectar BD";
-            this.ConectarBD.UseVisualStyleBackColor = false;
-            this.ConectarBD.Click += new System.EventHandler(this.ConectarBD_Click);
+            this.dgvEstudiantes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEstudiantes.Location = new System.Drawing.Point(174, 49);
+            this.dgvEstudiantes.Name = "dgvEstudiantes";
+            this.dgvEstudiantes.Size = new System.Drawing.Size(475, 276);
+            this.dgvEstudiantes.TabIndex = 0;
+            // 
+            // btnCargar
+            // 
+            this.btnCargar.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnCargar.Location = new System.Drawing.Point(355, 369);
+            this.btnCargar.Name = "btnCargar";
+            this.btnCargar.Size = new System.Drawing.Size(109, 51);
+            this.btnCargar.TabIndex = 1;
+            this.btnCargar.Text = "Cargar Datos";
+            this.btnCargar.UseVisualStyleBackColor = false;
+            this.btnCargar.Click += new System.EventHandler(this.btnCargar_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.ConectarBD);
+            this.Controls.Add(this.btnCargar);
+            this.Controls.Add(this.dgvEstudiantes);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEstudiantes)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button ConectarBD;
+        private System.Windows.Forms.DataGridView dgvEstudiantes;
+        private System.Windows.Forms.Button btnCargar;
     }
 }
 
