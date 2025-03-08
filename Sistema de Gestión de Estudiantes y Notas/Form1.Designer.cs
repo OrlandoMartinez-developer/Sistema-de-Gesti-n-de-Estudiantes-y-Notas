@@ -28,13 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.ConectarBD = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // ConectarBD
+            // 
+            this.ConectarBD.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ConectarBD.Location = new System.Drawing.Point(301, 243);
+            this.ConectarBD.Name = "ConectarBD";
+            this.ConectarBD.Size = new System.Drawing.Size(134, 58);
+            this.ConectarBD.TabIndex = 0;
+            this.ConectarBD.Text = "Conectar BD";
+            this.ConectarBD.UseVisualStyleBackColor = false;
+            this.ConectarBD.Click += new System.EventHandler(this.ConectarBD_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ConectarBD);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
@@ -42,6 +55,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Button ConectarBD;
     }
 }
 

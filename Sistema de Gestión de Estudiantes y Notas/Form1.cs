@@ -13,12 +13,17 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
 {
     public partial class Form1 : Form
     {
-        
+        ConexionBD conexion = new ConexionBD();
         public Form1()
         {
             InitializeComponent();
         }
 
-       
+        private void ConectarBD_Click(object sender, EventArgs e)
+        {
+            conexion.AbrirConexion();  
+            MessageBox.Show("Conexión exitosa con MySQL");
+            conexion.CerrarConexion();
+        }
     }
 }

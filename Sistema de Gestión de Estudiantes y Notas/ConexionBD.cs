@@ -8,7 +8,7 @@ namespace TuProyecto
         private MySqlConnection conexion;
 
         // 📌 CAMBIA estos valores según tu configuración
-        private string cadenaConexion = "server=localhost; database=Sistema_Estudiantes; user=root; password=; SslMode=none;";
+        private string cadenaConexion = "server=mysql-cero.alwaysdata.net; database=cero_sistema_estudiantes; user=cero_free; password=Cero!@#88M; SslMode=none;";
 
         public ConexionBD()
         {
