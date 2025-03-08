@@ -7,14 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TuProyecto;
 
 namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
 {
     public partial class Form1 : Form
     {
+        
         public Form1()
         {
             InitializeComponent();
         }
+
+       
     }
 }
