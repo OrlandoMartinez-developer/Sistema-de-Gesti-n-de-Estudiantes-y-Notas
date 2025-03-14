@@ -114,9 +114,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\ConexionBD.cs" />
-    <Compile Include="Clases\EstudianteService .cs" />
-    <Compile Include="Clases\MateriaService .cs" />
-    <Compile Include="Clases\NotaService .cs" />
     <Compile Include="Ventanas\FrmNotas.cs">
       <SubType>Form</SubType>
     </Compile>

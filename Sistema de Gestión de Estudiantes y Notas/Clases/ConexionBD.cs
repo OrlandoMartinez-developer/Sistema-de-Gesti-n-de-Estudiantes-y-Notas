@@ -21,18 +21,18 @@ namespace TuProyecto
                 if (conexion.State == System.Data.ConnectionState.Closed)
                 {
                     conexion.Open();
-                    MessageBox.Show("✅ Conexión abierta.");
+                    
                 }
                 return conexion;
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("❌ Error de MySQL: " + ex.Message);
+                MessageBox.Show(" Error de MySQL: " + ex.Message);
                 return null;
             }
             catch (Exception ex)
             {
-                MessageBox.Show("❌ Error general: " + ex.Message);
+                MessageBox.Show(" Error general: " + ex.Message);
                 return null;
             }
         }
@@ -44,12 +44,12 @@ namespace TuProyecto
                 if (conexion.State == System.Data.ConnectionState.Open)
                 {
                     conexion.Close();
-                    MessageBox.Show("🔒 Conexión cerrada.");
+                    
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("❌ Error al cerrar conexión: " + ex.Message);
+                MessageBox.Show("Error al cerrar conexión: " + ex.Message);
             }
         }
     }
