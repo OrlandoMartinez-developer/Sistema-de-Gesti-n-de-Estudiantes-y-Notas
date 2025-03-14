@@ -7,21 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TuProyecto;
 
 namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
 {
-    public partial class Form1 : Form
+    public partial class FrmInicio : Form
     {
-        CargarDE cargador = new CargarDE(); // Instancia de la clase para cargar datos
-        public Form1()
+        public FrmInicio()
         {
             InitializeComponent();
         }
 
-        private void btnCargar_Click(object sender, EventArgs e)
+        private void btnEntrar_Click(object sender, EventArgs e)
         {
-            dgvEstudiantes.DataSource = cargador.ObtenerDatos();
+            FrmNotas notas = new FrmNotas();
+            notas.Show();
+            this.Hide();
+
         }
     }
 }
