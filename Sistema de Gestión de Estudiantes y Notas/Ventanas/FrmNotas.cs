@@ -11,8 +11,8 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
 {
     public partial class FrmNotas : Form
     {
-        private readonly ConexionBD _conexionBD;
-       
+        ConexionBD conexionBD = new ConexionBD();
+
 
         public FrmNotas()
         {
@@ -25,7 +25,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
             CargarCursos(cmbCurso);
             CargarMaterias(cmbMateria);
             CargarNotas(dgvNotas);
-            CargarCursos(cmbCurso);
+           
         }
 
         private void CargarEstudiantes(System.Windows.Forms.ComboBox cmbEstudiantes)
@@ -33,7 +33,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
             try
             {
                 // Crear una instancia de la conexión
-                ConexionBD conexionBD = new ConexionBD();
+             
                 MySqlConnection conexion = conexionBD.Conectar();
 
                 if (conexion != null)
@@ -99,16 +99,16 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
                 }
                 else
                 {
-                    MessageBox.Show("⚠ No se pudo conectar a la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(" No se pudo conectar a la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (MySqlException ex)
             {
-                MessageBox.Show("❌ Error en la base de datos: " + ex.Message);
+                MessageBox.Show(" Error en la base de datos: " + ex.Message);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("❌ Error inesperado: " + ex.Message);
+                MessageBox.Show(" Error inesperado: " + ex.Message);
             }
         }
  
@@ -258,123 +258,135 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
-{
-    try
-    {
-        if (cmbEstudiantes.SelectedItem == null || cmbMateria.SelectedItem == null || cmbCurso.SelectedItem == null || string.IsNullOrWhiteSpace(TxtNota.Text))
         {
-            MessageBox.Show("Debes seleccionar un estudiante, una materia, un curso y escribir una calificación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return;
-        }
-
-        if (!decimal.TryParse(TxtNota.Text, out decimal calificacion) || calificacion < 0 || calificacion > 100)
-        {
-            MessageBox.Show("La calificación debe ser un número entre 0 y 100.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            return;
-        }
-
-        ConexionBD conexionBD = new ConexionBD();
-        MySqlConnection conexion = conexionBD.Conectar();
-
-        if (conexion != null)
-        {
-            string[] nombreApellido = cmbEstudiantes.SelectedItem.ToString().Split(' ');
-            if (nombreApellido.Length < 2)
+            try
             {
-                MessageBox.Show("Error: No se pudo obtener el nombre y apellido correctamente.");
-                return;
-            }
+                if (cmbEstudiantes.SelectedItem == null || cmbMateria.SelectedItem == null || cmbCurso.SelectedItem == null || string.IsNullOrWhiteSpace(TxtNota.Text))
+                {
+                    MessageBox.Show("Debes seleccionar un estudiante, una materia, un curso y escribir una calificación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            string nombre = nombreApellido[0];
-            string apellido = nombreApellido[1];
+                if (!decimal.TryParse(TxtNota.Text, out decimal calificacion) || calificacion < 0 || calificacion > 100)
+                {
+                    MessageBox.Show("La calificación debe ser un número entre 0 y 100.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            // Obtener id_estudiante
-            string consultaEstudiante = "SELECT id_estudiante FROM Estudiantes WHERE nombre = @nombre AND apellido = @apellido";
-            MySqlCommand cmdEstudiante = new MySqlCommand(consultaEstudiante, conexion);
-            cmdEstudiante.Parameters.AddWithValue("@nombre", nombre);
-            cmdEstudiante.Parameters.AddWithValue("@apellido", apellido);
-            object resultadoEstudiante = cmdEstudiante.ExecuteScalar();
+                ConexionBD conexionBD = new ConexionBD();
+                MySqlConnection conexion = conexionBD.Conectar();
 
-            if (resultadoEstudiante == null)
-            {
-                MessageBox.Show("❌ No se encontró el estudiante en la base de datos.");
-                return;
-            }
-            int idEstudiante = Convert.ToInt32(resultadoEstudiante);
+                if (conexion != null)
+                {
+                    string[] nombreApellido = cmbEstudiantes.SelectedItem.ToString().Split(' ');
+                    if (nombreApellido.Length < 2)
+                    {
+                        MessageBox.Show("Error: No se pudo obtener el nombre y apellido correctamente.");
+                        return;
+                    }
 
-            // Obtener id_materia
-            string consultaMateria = "SELECT id_materia FROM Materias WHERE nombre = @nombre";
-            MySqlCommand cmdMateria = new MySqlCommand(consultaMateria, conexion);
-            cmdMateria.Parameters.AddWithValue("@nombre", cmbMateria.SelectedItem.ToString());
-            object resultadoMateria = cmdMateria.ExecuteScalar();
+                    string nombre = nombreApellido[0];
+                    string apellido = nombreApellido[1];
 
-            if (resultadoMateria == null)
-            {
-                MessageBox.Show("❌ No se encontró la materia en la base de datos.");
-                return;
-            }
-            int idMateria = Convert.ToInt32(resultadoMateria);
+                    // Obtener id_estudiante
+                    string consultaEstudiante = "SELECT id_estudiante FROM Estudiantes WHERE nombre = @nombre AND apellido = @apellido";
+                    MySqlCommand cmdEstudiante = new MySqlCommand(consultaEstudiante, conexion);
+                    cmdEstudiante.Parameters.AddWithValue("@nombre", nombre);
+                    cmdEstudiante.Parameters.AddWithValue("@apellido", apellido);
+                    object resultadoEstudiante = cmdEstudiante.ExecuteScalar();
 
-            // Obtener el curso seleccionado
-            string cursoSeleccionado = cmbCurso.SelectedItem.ToString();
+                    if (resultadoEstudiante == null)
+                    {
+                        MessageBox.Show(" No se encontró el estudiante en la base de datos.");
+                        return;
+                    }
+                    int idEstudiante = Convert.ToInt32(resultadoEstudiante);
 
-            // Verificar si ya existe una nota en la misma materia y curso
-            string consultaNotas = @"
+                    // Obtener id_materia
+                    string consultaMateria = "SELECT id_materia FROM Materias WHERE nombre = @nombre";
+                    MySqlCommand cmdMateria = new MySqlCommand(consultaMateria, conexion);
+                    cmdMateria.Parameters.AddWithValue("@nombre", cmbMateria.SelectedItem.ToString());
+                    object resultadoMateria = cmdMateria.ExecuteScalar();
+
+                    if (resultadoMateria == null)
+                    {
+                        MessageBox.Show(" No se encontró la materia en la base de datos.");
+                        return;
+                    }
+                    int idMateria = Convert.ToInt32(resultadoMateria);
+
+                    // Obtener id_curso
+                    string consultaCurso = "SELECT id_curso FROM Cursos WHERE nombre = @nombre"; // Cambio: Correcta referencia a la tabla Cursos
+                    MySqlCommand cmdCurso = new MySqlCommand(consultaCurso, conexion);
+                    cmdCurso.Parameters.AddWithValue("@nombre", cmbCurso.SelectedItem.ToString());
+                    object resultadoCurso = cmdCurso.ExecuteScalar();
+
+                    if (resultadoCurso == null)
+                    {
+                        MessageBox.Show("❌ No se encontró el curso en la base de datos.");
+                        return;
+                    }
+                    int idCurso = Convert.ToInt32(resultadoCurso);
+
+                    // Verificar si ya existe una nota en la misma materia y curso
+                    string consultaNotas = @"
                 SELECT id_nota FROM Notas 
                 WHERE id_estudiante = @idEstudiante 
                 AND id_materia = @idMateria 
-                AND curso = @curso";
+                AND id_curso = @idCurso"; // Cambio: Campo id_curso en lugar de curso
 
-            MySqlCommand cmdNotas = new MySqlCommand(consultaNotas, conexion);
-            cmdNotas.Parameters.AddWithValue("@idEstudiante", idEstudiante);
-            cmdNotas.Parameters.AddWithValue("@idMateria", idMateria);
-            cmdNotas.Parameters.AddWithValue("@curso", cursoSeleccionado);
+                    MySqlCommand cmdNotas = new MySqlCommand(consultaNotas, conexion);
+                    cmdNotas.Parameters.AddWithValue("@idEstudiante", idEstudiante);
+                    cmdNotas.Parameters.AddWithValue("@idMateria", idMateria);
+                    cmdNotas.Parameters.AddWithValue("@idCurso", idCurso);
 
-            object resultadoNota = cmdNotas.ExecuteScalar();
+                    object resultadoNota = cmdNotas.ExecuteScalar();
 
-            if (resultadoNota != null) // Si ya existe una nota para esta materia y curso
-            {
-                MessageBox.Show("⚠ El estudiante ya tiene una nota registrada para esta materia en este curso. No se pueden agregar más.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                    if (resultadoNota != null) // Si ya existe una nota para esta materia y curso
+                    {
+                        MessageBox.Show(" El estudiante ya tiene una nota registrada para esta materia en este curso. No se pueden agregar más.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    // Insertar nueva nota si no hay ninguna en el curso actual
+                    string consultaInsertar = "INSERT INTO Notas (id_estudiante, id_materia, calificacion, id_curso, fecha_registro) VALUES (@idEstudiante, @idMateria, @calificacion, @idCurso, NOW())"; // Cambio: id_curso
+                    MySqlCommand cmdInsertar = new MySqlCommand(consultaInsertar, conexion);
+                    cmdInsertar.Parameters.AddWithValue("@idEstudiante", idEstudiante);
+                    cmdInsertar.Parameters.AddWithValue("@idMateria", idMateria);
+                    cmdInsertar.Parameters.AddWithValue("@calificacion", calificacion);
+                    cmdInsertar.Parameters.AddWithValue("@idCurso", idCurso);
+
+                    int filasAfectadas = cmdInsertar.ExecuteNonQuery();
+
+                    if (filasAfectadas > 0)
+                    {
+                        MessageBox.Show(" Nota guardada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarNotas(dgvNotas);
+                    }
+                    else
+                    {
+                        MessageBox.Show(" No se pudo guardar la nota.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    conexionBD.Desconectar();
+                }
+                else
+                {
+                    MessageBox.Show(" No se pudo establecer la conexión con la base de datos.");
+                }
             }
-
-            // Insertar nueva nota si no hay ninguna en el curso actual
-            string consultaInsertar = "INSERT INTO Notas (id_estudiante, id_materia, calificacion, curso, fecha_registro) VALUES (@idEstudiante, @idMateria, @calificacion, @curso, NOW())";
-            MySqlCommand cmdInsertar = new MySqlCommand(consultaInsertar, conexion);
-            cmdInsertar.Parameters.AddWithValue("@idEstudiante", idEstudiante);
-            cmdInsertar.Parameters.AddWithValue("@idMateria", idMateria);
-            cmdInsertar.Parameters.AddWithValue("@calificacion", calificacion);
-            cmdInsertar.Parameters.AddWithValue("@curso", cursoSeleccionado);
-
-            int filasAfectadas = cmdInsertar.ExecuteNonQuery();
-
-            if (filasAfectadas > 0)
+            catch (MySqlException ex)
             {
-                MessageBox.Show("✅ Nota guardada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                CargarNotas(dgvNotas);
+                MessageBox.Show(" Error en la base de datos: " + ex.Message);
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("⚠ No se pudo guardar la nota.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(" Error inesperado: " + ex.Message);
             }
-
-            conexionBD.Desconectar();
         }
-        else
-        {
-            MessageBox.Show("⚠ No se pudo establecer la conexión con la base de datos.");
-        }
-    }
-    catch (MySqlException ex)
-    {
-        MessageBox.Show("❌ Error en la base de datos: " + ex.Message);
-    }
-    catch (Exception ex)
-    {
-        MessageBox.Show("❌ Error inesperado: " + ex.Message);
-    }
-}
-
 
     }
+
+
+
 }

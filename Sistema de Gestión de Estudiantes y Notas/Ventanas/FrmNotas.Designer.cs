@@ -34,8 +34,8 @@
             this.TxtNota = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.dgvNotas = new System.Windows.Forms.DataGridView();
-            this.estudianteServiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cmbCurso = new System.Windows.Forms.ComboBox();
+            this.estudianteServiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estudianteServiceBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -76,7 +76,7 @@
             // dgvNotas
             // 
             this.dgvNotas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNotas.Location = new System.Drawing.Point(301, 89);
+            this.dgvNotas.Location = new System.Drawing.Point(288, 95);
             this.dgvNotas.Name = "dgvNotas";
             this.dgvNotas.Size = new System.Drawing.Size(576, 315);
             this.dgvNotas.TabIndex = 4;
