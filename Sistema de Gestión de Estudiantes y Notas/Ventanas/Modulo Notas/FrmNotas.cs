@@ -4,6 +4,8 @@ using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Sistema_de_Gestión_de_Estudiantes_y_Notas;
+using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas;
+using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Notas;
 using TuProyecto;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
@@ -12,7 +14,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
     public partial class FrmNotas : Form
     {
         ConexionBD conexionBD = new ConexionBD();
-
+      
 
         public FrmNotas()
         {
@@ -25,7 +27,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
             CargarCursos(cmbCurso);
             CargarMaterias(cmbMateria);
             CargarNotas(dgvNotas);
-           
+
         }
 
         private void CargarEstudiantes(System.Windows.Forms.ComboBox cmbEstudiantes)
@@ -33,7 +35,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
             try
             {
                 // Crear una instancia de la conexión
-             
+
                 MySqlConnection conexion = conexionBD.Conectar();
 
                 if (conexion != null)
@@ -111,9 +113,9 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
                 MessageBox.Show(" Error inesperado: " + ex.Message);
             }
         }
- 
 
-        private void CargarMaterias(System.Windows.Forms.ComboBox cmbMateria) 
+
+        private void CargarMaterias(System.Windows.Forms.ComboBox cmbMateria)
         {
             try
             {
@@ -211,51 +213,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
         }
 
 
-        private int idNotaSeleccionada = -1; // Variable global para almacenar el ID de la nota seleccionada
 
-        private void dgvNotas_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0) // Verifica que se hizo clic en una fila válida
-            {
-                DataGridViewRow fila = dgvNotas.Rows[e.RowIndex];
-
-                // Obtener valores de la fila seleccionada
-                string estudiante = fila.Cells["estudiante"].Value.ToString();
-                string materia = fila.Cells["materia"].Value.ToString();
-                string calificacion = fila.Cells["calificacion"].Value.ToString();
-
-                // Buscar el ID de la nota seleccionada en la base de datos
-                ConexionBD conexionBD = new ConexionBD();
-                MySqlConnection conexion = conexionBD.Conectar();
-
-                if (conexion != null)
-                {
-                    string consulta = @"
-                SELECT n.id_nota FROM Notas n
-                JOIN Estudiantes e ON n.id_estudiante = e.id_estudiante
-                JOIN Materias m ON n.id_materia = m.id_materia
-                WHERE CONCAT(e.nombre, ' ', e.apellido) = @estudiante
-                AND m.nombre = @materia";
-
-                    MySqlCommand cmd = new MySqlCommand(consulta, conexion);
-                    cmd.Parameters.AddWithValue("@estudiante", estudiante);
-                    cmd.Parameters.AddWithValue("@materia", materia);
-                    object resultado = cmd.ExecuteScalar();
-
-                    if (resultado != null)
-                    {
-                        idNotaSeleccionada = Convert.ToInt32(resultado); // Guardar el ID de la nota
-                    }
-
-                    conexionBD.Desconectar();
-                }
-
-                // Asignar los valores a los controles
-                cmbEstudiantes.SelectedItem = estudiante;
-                cmbMateria.SelectedItem = materia;
-                TxtNota.Text = calificacion;
-            }
-        }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -385,8 +343,169 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
             }
         }
 
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbEstudiantes.SelectedItem == null || cmbMateria.SelectedItem == null || cmbCurso.SelectedItem == null || string.IsNullOrWhiteSpace(TxtNota.Text))
+                {
+                    MessageBox.Show("Debes seleccionar un estudiante, una materia, un curso y escribir una calificación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (!decimal.TryParse(TxtNota.Text, out decimal calificacion) || calificacion < 0 || calificacion > 100)
+                {
+                    MessageBox.Show("La calificación debe ser un número entre 0 y 100.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                ConexionBD conexionBD = new ConexionBD();
+                MySqlConnection conexion = conexionBD.Conectar();
+
+                if (conexion != null)
+                {
+                    // Obtener IDs del estudiante, materia y curso
+                    int idEstudiante = ObtenerIdEstudiante(conexion);
+                    int idMateria = ObtenerIdMateria(conexion);
+                    int idCurso = ObtenerIdCurso(conexion);
+
+                    if (idEstudiante == -1 || idMateria == -1 || idCurso == -1)
+                    {
+                        MessageBox.Show("No se pudieron obtener los datos correctamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Consulta SQL para actualizar la nota
+                    string consulta = "UPDATE Notas SET calificacion = @calificacion WHERE id_estudiante = @idEstudiante AND id_materia = @idMateria";
+                    MySqlCommand cmd = new MySqlCommand(consulta, conexion);
+                    cmd.Parameters.AddWithValue("@calificacion", calificacion);
+                    cmd.Parameters.AddWithValue("@idEstudiante", idEstudiante);
+                    cmd.Parameters.AddWithValue("@idMateria", idMateria);
+
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+
+                    if (filasAfectadas > 0)
+                    {
+                        MessageBox.Show("Nota actualizada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarNotas(dgvNotas); // Recargar las notas en el DataGridView
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró la nota para editar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    conexionBD.Desconectar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al editar la nota: " + ex.Message);
+            }
+        }
+
+        private void btneliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbEstudiantes.SelectedItem == null || cmbMateria.SelectedItem == null || cmbCurso.SelectedItem == null)
+                {
+                    MessageBox.Show("Debes seleccionar un estudiante, una materia y un curso para eliminar la nota.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                DialogResult resultado = MessageBox.Show("¿Estás seguro de que deseas eliminar esta nota?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (resultado == DialogResult.No) return;
+
+                ConexionBD conexionBD = new ConexionBD();
+                MySqlConnection conexion = conexionBD.Conectar();
+
+                if (conexion != null)
+                {
+                    // Obtener IDs del estudiante, materia y curso
+                    int idEstudiante = ObtenerIdEstudiante(conexion);
+                    int idMateria = ObtenerIdMateria(conexion);
+                    int idCurso = ObtenerIdCurso(conexion);
+
+                    if (idEstudiante == -1 || idMateria == -1 || idCurso == -1)
+                    {
+                        MessageBox.Show("No se pudieron obtener los datos correctamente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Consulta SQL para eliminar la nota
+                    string consulta = "DELETE FROM Notas WHERE id_estudiante = @idEstudiante AND id_materia = @idMateria";
+                    MySqlCommand cmd = new MySqlCommand(consulta, conexion);
+                    cmd.Parameters.AddWithValue("@idEstudiante", idEstudiante);
+                    cmd.Parameters.AddWithValue("@idMateria", idMateria);
+
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+
+                    if (filasAfectadas > 0)
+                    {
+                        MessageBox.Show("Nota eliminada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        CargarNotas(dgvNotas); // Recargar las notas en el DataGridView
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró la nota para eliminar.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    conexionBD.Desconectar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al eliminar la nota: " + ex.Message);
+            }
+        }
+
+        private int ObtenerIdEstudiante(MySqlConnection conexion)
+        {
+            string[] nombreApellido = cmbEstudiantes.SelectedItem.ToString().Split(' ');
+            if (nombreApellido.Length < 2) return -1;
+
+            string nombre = nombreApellido[0];
+            string apellido = nombreApellido[1];
+
+            string consulta = "SELECT id_estudiante FROM Estudiantes WHERE nombre = @nombre AND apellido = @apellido";
+            MySqlCommand cmd = new MySqlCommand(consulta, conexion);
+            cmd.Parameters.AddWithValue("@nombre", nombre);
+            cmd.Parameters.AddWithValue("@apellido", apellido);
+
+            object resultado = cmd.ExecuteScalar();
+            return resultado != null ? Convert.ToInt32(resultado) : -1;
+        }
+
+        private int ObtenerIdMateria(MySqlConnection conexion)
+        {
+            string consulta = "SELECT id_materia FROM Materias WHERE nombre = @nombre";
+            MySqlCommand cmd = new MySqlCommand(consulta, conexion);
+            cmd.Parameters.AddWithValue("@nombre", cmbMateria.SelectedItem.ToString());
+
+            object resultado = cmd.ExecuteScalar();
+            return resultado != null ? Convert.ToInt32(resultado) : -1;
+        }
+
+        private int ObtenerIdCurso(MySqlConnection conexion)
+        {
+            string consulta = "SELECT id_curso FROM Cursos WHERE nombre = @nombre";
+            MySqlCommand cmd = new MySqlCommand(consulta, conexion);
+            cmd.Parameters.AddWithValue("@nombre", cmbCurso.SelectedItem.ToString());
+
+            object resultado = cmd.ExecuteScalar();
+            return resultado != null ? Convert.ToInt32(resultado) : -1;
+        }
+
+        private void btnpromedio_Click(object sender, EventArgs e)
+        {
+            FrmPromedio promedio = new FrmPromedio();
+            promedio.ShowDialog();
+        }
+
+        private void btnReporte_Click(object sender, EventArgs e)
+        {
+            ReporteDeNotas reporte = new ReporteDeNotas();
+            reporte.ShowDialog();
+        }
     }
-
-
-
 }
