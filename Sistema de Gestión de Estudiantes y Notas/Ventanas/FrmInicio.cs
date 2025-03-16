@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
 {
-    public partial class Form1 : Form
+    public partial class FrmInicio : Form
     {
-        public Form1()
+        public FrmInicio()
         {
             InitializeComponent();
+        }
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            FrmNotas notas = new FrmNotas();
+            notas.Show();
+            this.Hide();
+
         }
     }
 }
