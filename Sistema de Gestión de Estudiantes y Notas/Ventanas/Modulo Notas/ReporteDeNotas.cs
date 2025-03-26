@@ -9,10 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using System.Xml.Linq;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Crypto.Engines;
 using TuProyecto;
 
 namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Notas
@@ -25,6 +27,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Notas
             InitializeComponent();
             CargarEstudiantes();
             CargarCursos();
+            btnReporte.ContextMenuStrip = contextMenuReporte;
         }
 
         private void ReporteDeNotas_Load(object sender, EventArgs e)
@@ -134,9 +137,12 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Notas
             {
                 MessageBox.Show("Error al generar el reporte: " + ex.Message);
             }
+
         }
 
-        private void btnPDF_Click(object sender, EventArgs e)
+
+
+        private void generarReportePDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgvReporteNotas.Rows.Count == 0)
             {
@@ -181,5 +187,19 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Notas
                 }
             }
         }
+
+        private void generarReporteGraficoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var estudianteSeleccionado = (KeyValuePair<int, string>)cmbEstudiantes.SelectedItem;
+            var cursoSeleccionado = (KeyValuePair<int, string>)cmbCurso.SelectedItem;
+
+            int idEstudiante = estudianteSeleccionado.Key;
+            int idCurso = cursoSeleccionado.Key;
+
+            // Crear el formulario del reporte gráfico y mostrarlo
+            ReporteGrafico reporteGraficoForm = new ReporteGrafico(idEstudiante, idCurso);
+            reporteGraficoForm.ShowDialog();
+        }
+
     }
 }
