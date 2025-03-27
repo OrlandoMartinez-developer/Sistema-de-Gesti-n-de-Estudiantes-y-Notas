@@ -1,4 +1,6 @@
-﻿namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
+﻿using System.Drawing;
+
+namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
 {
     partial class FrmNotas
     {
@@ -43,6 +45,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estudianteServiceBindingSource)).BeginInit();
             this.SuspendLayout();
+
+            this.BackColor = Color.FromArgb(238, 238, 238); // Fondo principal gris neutro
             // 
             // cmbEstudiantes
             // 
@@ -155,6 +159,42 @@
             ((System.ComponentModel.ISupportInitialize)(this.estudianteServiceBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
+
+           
+this.cmbEstudiantes.BackColor = Color.White;
+            this.cmbEstudiantes.ForeColor = Color.FromArgb(66, 66, 66);
+            this.cmbMateria.BackColor = Color.White;
+            this.cmbMateria.ForeColor = Color.FromArgb(66, 66, 66);
+            this.cmbCurso.BackColor = Color.White;
+            this.cmbCurso.ForeColor = Color.FromArgb(66, 66, 66);
+
+            // Estilo del TextBox
+            this.TxtNota.BackColor = Color.White;
+            this.TxtNota.ForeColor = Color.FromArgb(66, 66, 66);
+
+            // Estilo de los botones
+            this.btnGuardar.BackColor = Color.FromArgb(33, 150, 243);
+            this.btnGuardar.ForeColor = Color.White;
+            this.btnEditar.BackColor = Color.FromArgb(255, 193, 7);
+            this.btnEditar.ForeColor = Color.White;
+            this.btneliminar.BackColor = Color.FromArgb(244, 67, 54);
+            this.btneliminar.ForeColor = Color.White;
+            this.btnpromedio.BackColor = Color.FromArgb(102, 187, 106);
+            this.btnpromedio.ForeColor = Color.White;
+            this.btnReporte.BackColor = Color.FromArgb(76, 175, 80);
+            this.btnReporte.ForeColor = Color.White;
+
+            // Estilo del DataGridView
+            dgvNotas.BackgroundColor = Color.White;
+            dgvNotas.ForeColor = Color.FromArgb(66, 66, 66);
+            dgvNotas.GridColor = Color.FromArgb(158, 158, 158);
+            dgvNotas.DefaultCellStyle.BackColor = Color.White;
+            dgvNotas.DefaultCellStyle.ForeColor = Color.FromArgb(66, 66, 66);
+            dgvNotas.DefaultCellStyle.SelectionBackColor = Color.FromArgb(33, 150, 243);
+            dgvNotas.DefaultCellStyle.SelectionForeColor = Color.White;
+            dgvNotas.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(33, 150, 243);
+            dgvNotas.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dgvNotas.EnableHeadersVisualStyles = false;
 
         }
 
