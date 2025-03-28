@@ -231,7 +231,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
                     return;
                 }
 
-                ConexionBD conexionBD = new ConexionBD();
+                
                 MySqlConnection conexion = conexionBD.Conectar();
 
                 if (conexion != null)

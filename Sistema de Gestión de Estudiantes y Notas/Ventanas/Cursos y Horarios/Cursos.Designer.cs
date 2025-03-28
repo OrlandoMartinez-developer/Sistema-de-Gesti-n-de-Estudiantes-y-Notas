@@ -37,7 +37,6 @@
             this.btnAgregarHorario = new System.Windows.Forms.Button();
             this.btnEliminarHorario = new System.Windows.Forms.Button();
             this.dtpHoraFin = new System.Windows.Forms.DateTimePicker();
-            this.lblEstado = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHorarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,21 +124,11 @@
             this.dtpHoraFin.TabIndex = 8;
             this.dtpHoraFin.Value = new System.DateTime(2025, 3, 27, 18, 30, 8, 0);
             // 
-            // lblEstado
-            // 
-            this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(469, 337);
-            this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(40, 13);
-            this.lblEstado.TabIndex = 9;
-            this.lblEstado.Text = "Estado";
-            // 
             // Cursos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 450);
-            this.Controls.Add(this.lblEstado);
             this.Controls.Add(this.dtpHoraFin);
             this.Controls.Add(this.btnEliminarHorario);
             this.Controls.Add(this.btnAgregarHorario);
@@ -153,7 +142,6 @@
             this.Text = "Cursos";
             ((System.ComponentModel.ISupportInitialize)(this.dgvHorarios)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -168,6 +156,5 @@
         private System.Windows.Forms.Button btnAgregarHorario;
         private System.Windows.Forms.Button btnEliminarHorario;
         private System.Windows.Forms.DateTimePicker dtpHoraFin;
-        private System.Windows.Forms.Label lblEstado;
     }
 }
