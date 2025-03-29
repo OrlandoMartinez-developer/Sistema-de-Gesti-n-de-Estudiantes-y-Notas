@@ -37,6 +37,7 @@
             this.btnAgregarHorario = new System.Windows.Forms.Button();
             this.btnEliminarHorario = new System.Windows.Forms.Button();
             this.dtpHoraFin = new System.Windows.Forms.DateTimePicker();
+            this.btnCursos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHorarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -124,11 +125,22 @@
             this.dtpHoraFin.TabIndex = 8;
             this.dtpHoraFin.Value = new System.DateTime(2025, 3, 27, 18, 30, 8, 0);
             // 
+            // btnCursos
+            // 
+            this.btnCursos.Location = new System.Drawing.Point(438, 331);
+            this.btnCursos.Name = "btnCursos";
+            this.btnCursos.Size = new System.Drawing.Size(75, 23);
+            this.btnCursos.TabIndex = 9;
+            this.btnCursos.Text = "Cursos";
+            this.btnCursos.UseVisualStyleBackColor = true;
+            this.btnCursos.Click += new System.EventHandler(this.btnCursos_Click);
+            // 
             // Cursos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 450);
+            this.Controls.Add(this.btnCursos);
             this.Controls.Add(this.dtpHoraFin);
             this.Controls.Add(this.btnEliminarHorario);
             this.Controls.Add(this.btnAgregarHorario);
@@ -156,5 +168,6 @@
         private System.Windows.Forms.Button btnAgregarHorario;
         private System.Windows.Forms.Button btnEliminarHorario;
         private System.Windows.Forms.DateTimePicker dtpHoraFin;
+        private System.Windows.Forms.Button btnCursos;
     }
 }

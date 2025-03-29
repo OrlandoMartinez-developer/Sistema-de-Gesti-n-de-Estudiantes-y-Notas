@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using TuProyecto; // Asegúrate de que este namespace es correcto
+using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Notas;
+using TuProyecto; 
 
 namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios
 {
@@ -299,7 +300,10 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios
             dtpHoraFin.Value = DateTime.Now;
         }
 
-
-
+        private void btnCursos_Click(object sender, EventArgs e)
+        {
+            Cursos1 cursos = new Cursos1();
+            cursos.ShowDialog();
+        }
     }
 }

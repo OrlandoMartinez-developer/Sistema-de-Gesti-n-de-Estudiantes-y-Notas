@@ -128,6 +128,12 @@
     <Compile Include="Ventanas\Cursos y Horarios\Cursos.Designer.cs">
       <DependentUpon>Cursos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\Cursos y Horarios\Cursos1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Cursos y Horarios\Cursos1.Designer.cs">
+      <DependentUpon>Cursos1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\FrmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     </Compile>
     <EmbeddedResource Include="Ventanas\Cursos y Horarios\Cursos.resx">
       <DependentUpon>Cursos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Cursos y Horarios\Cursos1.resx">
+      <DependentUpon>Cursos1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\FrmInicio.resx">
       <DependentUpon>FrmInicio.cs</DependentUpon>
