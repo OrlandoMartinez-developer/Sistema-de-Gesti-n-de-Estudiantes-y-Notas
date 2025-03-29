@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
 using MySql.Data.MySqlClient;
-using TuProyecto; // Asegúrate de que este namespace es correcto
+using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Notas;
+using TuProyecto; 
 
 namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios
 {
@@ -41,8 +45,8 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios
         {
             try
             {
-                using (MySqlConnection conexion = conexionBD.Conectar())
-                {
+                MySqlConnection conexion = conexionBD.Conectar();
+                
                     if (conexion == null)
                     {
                         MessageBox.Show("No se pudo conectar a la base de datos.", "Error de Conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -69,7 +73,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios
                     if (cbCursos.Items.Count > 0)
                         cbCursos.SelectedIndex = 0; //selecciona el primero si hay items
 
-                }
+                
             }
             catch (MySqlException ex)
             {
@@ -87,8 +91,8 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios
         {
             try
             {
-                using (MySqlConnection conexion = conexionBD.Conectar())
-                {
+                MySqlConnection conexion = conexionBD.Conectar();
+                
                     if (conexion == null)
                     {
                         MessageBox.Show("No se pudo conectar a la base de datos.", "Error de Conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -114,7 +118,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios
                     cbMaterias.ValueMember = "Key";
                     if (cbMaterias.Items.Count > 0)
                         cbMaterias.SelectedIndex = 0;
-                }
+                
             }
             catch (MySqlException ex)
             {
@@ -132,8 +136,8 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios
         {
             try
             {
-                using (MySqlConnection conexion = conexionBD.Conectar())
-                {
+                MySqlConnection conexion = conexionBD.Conectar();
+                
                     if (conexion == null)
                     {
                         MessageBox.Show("No se pudo conectar a la base de datos.", "Error de Conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -158,7 +162,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios
                     cbDocentes.ValueMember = "Key";
                     if (cbDocentes.Items.Count > 0)
                         cbDocentes.SelectedIndex = 0;
-                }
+                
             }
             catch (MySqlException ex)
             {
@@ -175,62 +179,45 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios
         {
             try
             {
-                using (MySqlConnection conexion = conexionBD.Conectar())
-                {
+                MySqlConnection conexion = conexionBD.Conectar();
+                
                     if (conexion == null || conexion.State != ConnectionState.Open)
                     {
-                        MessageBox.Show("No se pudo conectar a la base de datos. Por favor, verifique su conexión y vuelva a intentarlo.", "Error de Conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error de conexión a la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
-                    // Consulta SQL mejorada y más segura, usando parámetros para evitar inyección SQL
                     string consulta = @"
                 SELECT 
                     h.id_horario AS ID,
+                    g.nombre AS Grado,  -- Nombre del grado (si existe tabla Grados_Academicos)
                     c.nombre AS Curso,
                     m.nombre AS Materia,
-                    d.nombre AS Docente, -- Asume que quieres el nombre del docente
+                    d.nombre AS Docente,
                     h.dia AS Día,
-                    h.hora_inicio AS 'Hora de Inicio',
-                    h.hora_fin AS 'Hora de Fin'
+                    h.hora_inicio AS 'Hora Inicio',
+                    h.hora_fin AS 'Hora Fin'
                 FROM Horarios h
                 INNER JOIN Cursos c ON h.id_curso = c.id_curso
+                LEFT JOIN Grados_Academicos g ON h.id_grado = g.id_grado  -- Ajusta según tu esquema
                 INNER JOIN Materias m ON h.id_materia = m.id_materia
-                INNER JOIN Docentes d ON h.id_docente = d.id_docente"; // Join con la tabla Docentes
+                INNER JOIN Docentes d ON h.id_docente = d.id_docente";
 
-                    MySqlCommand comando = new MySqlCommand(consulta, conexion); // Usar SqlCommand
-                    MySqlDataAdapter adaptador = new MySqlDataAdapter(comando);
+                    MySqlDataAdapter adaptador = new MySqlDataAdapter(consulta, conexion);
                     DataTable tablaHorarios = new DataTable();
                     adaptador.Fill(tablaHorarios);
 
-                    // Asignar los datos al DataGridView
                     dgvHorarios.DataSource = tablaHorarios;
-                    dgvHorarios.AutoGenerateColumns = true; // Asegurar que las columnas se generen automáticamente.
-
-                    // Opcional: Personalizar nombres de las columnas del DataGridView (puedes hacerlo aquí o en el diseñador)
-                    if (dgvHorarios.Columns.Count > 0)
-                    {
-                        dgvHorarios.Columns["ID"].HeaderText = "ID";
-                        dgvHorarios.Columns["Curso"].HeaderText = "Curso";
-                        dgvHorarios.Columns["Materia"].HeaderText = "Materia";
-                        dgvHorarios.Columns["Docente"].HeaderText = "Docente";
-                        dgvHorarios.Columns["Día"].HeaderText = "Día";
-                        dgvHorarios.Columns["Hora de Inicio"].HeaderText = "Hora de Inicio";
-                        dgvHorarios.Columns["Hora de Fin"].HeaderText = "Hora de Fin";
-                    }
-                }
+                    dgvHorarios.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                
             }
             catch (MySqlException ex)
             {
-                // Log de errores (recomendado para producción)
-                Console.WriteLine("Error de MySQL al cargar horarios: " + ex.Message + "\n" + ex.StackTrace);
-                MessageBox.Show("Error al cargar los horarios: " + ex.Message + ". Por favor, contacte al administrador del sistema.", "Error de Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error de MySQL: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                // Capturar otros tipos de excepciones (importante para la robustez)
-                Console.WriteLine("Error general al cargar horarios: " + ex.Message + "\n" + ex.StackTrace);
-                MessageBox.Show("Se produjo un error inesperado al cargar los horarios: " + ex.Message + ". Por favor, contacte al administrador del sistema.", "Error Inesperado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error general: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -238,18 +225,21 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios
 
         private void btnAgregarHorario_Click(object sender, EventArgs e)
         {
-            if (cbCursos.SelectedItem == null || cbMaterias.SelectedItem == null || cbDocentes.SelectedItem == null || string.IsNullOrEmpty(dtpHoraInicio.Text) || string.IsNullOrEmpty(dtpHoraFin.Text) || cbDia.SelectedItem == null)
+            // Validaciones
+            if (cbCursos.SelectedItem == null || cbMaterias.SelectedItem == null ||
+                cbDocentes.SelectedItem == null || cbDia.SelectedItem == null)
             {
-                MessageBox.Show("Por favor, seleccione un curso, una materia, un docente, un día y especifique las horas de inicio y fin.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Complete todos los campos obligatorios.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+            // Obtener valores
             int idCurso = ((KeyValuePair<int, string>)cbCursos.SelectedItem).Key;
             int idMateria = ((KeyValuePair<int, string>)cbMaterias.SelectedItem).Key;
             int idDocente = ((KeyValuePair<int, string>)cbDocentes.SelectedItem).Key;
-            string horaInicio = dtpHoraInicio.Value.ToString("HH:mm");
-            string horaFin = dtpHoraFin.Value.ToString("HH:mm");
-            string dia = cbDia.SelectedItem.ToString(); // Obtener el día seleccionado del ComboBox cbDia
+            string horaInicio = dtpHoraInicio.Value.ToString("HH:mm:ss");  // Formato TIME de MySQL
+            string horaFin = dtpHoraFin.Value.ToString("HH:mm:ss");
+            string dia = cbDia.SelectedItem.ToString();
 
             try
             {
@@ -257,49 +247,49 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios
                 {
                     if (conexion == null || conexion.State != ConnectionState.Open)
                     {
-                        MessageBox.Show("No se pudo conectar a la base de datos. Por favor, verifique su conexión y vuelva a intentarlo.", "Error de Conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error de conexión a la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
-                    // Consulta SQL mejorada: Usa los IDs en lugar de los nombres.  Incluye el día.
+                    // Consulta INSERT (incluye id_grado e id_curso)
                     string consulta = @"
-                INSERT INTO Horarios (id_curso, id_materia, id_docente, hora_inicio, hora_fin, dia) 
-                VALUES (@idCurso, @idMateria, @idDocente, @horaInicio, @horaFin, @dia)";
+                INSERT INTO Horarios 
+                    (id_grado, id_curso, id_materia, id_docente, dia, hora_inicio, hora_fin) 
+                VALUES 
+                    (@idGrado, @idCurso, @idMateria, @idDocente, @dia, @horaInicio, @horaFin)";
 
-                    using (MySqlCommand comando = new MySqlCommand(consulta, conexion))
-                    {
+                    MySqlCommand comando = new MySqlCommand(consulta, conexion);
+                    
+                        // Asignar parámetros
+                        comando.Parameters.AddWithValue("@idGrado", idCurso);  // Asume que id_grado = id_curso
                         comando.Parameters.AddWithValue("@idCurso", idCurso);
                         comando.Parameters.AddWithValue("@idMateria", idMateria);
                         comando.Parameters.AddWithValue("@idDocente", idDocente);
+                        comando.Parameters.AddWithValue("@dia", dia);
                         comando.Parameters.AddWithValue("@horaInicio", horaInicio);
                         comando.Parameters.AddWithValue("@horaFin", horaFin);
-                        comando.Parameters.AddWithValue("@dia", dia); // Añadir el parámetro del día
 
                         int filasAfectadas = comando.ExecuteNonQuery();
                         if (filasAfectadas > 0)
                         {
                             MessageBox.Show("Horario agregado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            CargarHorarios(); // Refrescar la tabla después de agregar un horario
-                            LimpiarFormularioHorario(); // Llamar a la función para limpiar el formulario
+                            CargarHorarios();  // Actualizar la vista
+                            LimpiarFormularioHorario();
                         }
                         else
                         {
-                            MessageBox.Show("No se pudo agregar el horario.  Verifique que los datos sean correctos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("No se pudo agregar el horario.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                    }
+                    
                 }
             }
             catch (MySqlException ex)
             {
-                // Log de errores
-                Console.WriteLine("Error de MySQL al agregar horario: " + ex.Message + "\n" + ex.StackTrace);
-                MessageBox.Show("Error al agregar horario: " + ex.Message + ". Por favor, contacte al administrador del sistema.", "Error de Base de Datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error de MySQL: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                // Capturar otros errores
-                Console.WriteLine("Error general al agregar horario: " + ex.Message + "\n" + ex.StackTrace);
-                MessageBox.Show("Se produjo un error inesperado al agregar el horario: " + ex.Message + ". Por favor, contacte al administrador del sistema.", "Error Inesperado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error general: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -313,7 +303,381 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios
             dtpHoraFin.Value = DateTime.Now;
         }
 
+        private void btnCursos_Click(object sender, EventArgs e)
+        {
+            Cursos1 cursos = new Cursos1();
+            cursos.ShowDialog();
+        }
 
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            if (dgvHorarios.Rows.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            // Mostrar opciones de exportación
+            using (var formExportar = new Form())
+            {
+                formExportar.Text = "Opciones de Exportación";
+                formExportar.Size = new Size(300, 200);
+                formExportar.StartPosition = FormStartPosition.CenterParent;
+
+                var btnPDF = new Button() { Text = "Exportar a PDF", Left = 50, Top = 20, Width = 200 };
+                var btnWord = new Button() { Text = "Exportar a Word", Left = 50, Top = 60, Width = 200 };
+                var btnVistaPrevia = new Button() { Text = "Vista Previa", Left = 50, Top = 100, Width = 200 };
+
+                btnPDF.Click += (s, ev) => { formExportar.DialogResult = DialogResult.Yes; formExportar.Close(); };
+                btnWord.Click += (s, ev) => { formExportar.DialogResult = DialogResult.No; formExportar.Close(); };
+                btnVistaPrevia.Click += (s, ev) => { formExportar.DialogResult = DialogResult.OK; formExportar.Close(); };
+
+                formExportar.Controls.Add(btnPDF);
+                formExportar.Controls.Add(btnWord);
+                formExportar.Controls.Add(btnVistaPrevia);
+
+                var result = formExportar.ShowDialog();
+
+                if (result == DialogResult.Yes)
+                {
+                    ExportarAPDF();
+                }
+                else if (result == DialogResult.No)
+                {
+                    ExportarAWord();
+                }
+                else if (result == DialogResult.OK)
+                {
+                    MostrarVistaPrevia();
+                }
+            }
+        }
+
+        private void ExportarAPDF()
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Archivo PDF (*.pdf)|*.pdf";
+            saveFileDialog.Title = "Guardar horario como PDF";
+            saveFileDialog.FileName = $"Horario_{DateTime.Now:yyyyMMddHHmmss}.pdf";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Especificar el namespace completo para evitar ambigüedad
+                    iTextSharp.text.Document document = new iTextSharp.text.Document(iTextSharp.text.PageSize.A4.Rotate(), 10, 10, 10, 10);
+                    iTextSharp.text.pdf.PdfWriter.GetInstance(document, new FileStream(saveFileDialog.FileName, FileMode.Create));
+                    document.Open();
+
+                    // Título del documento - usar el namespace completo
+                    iTextSharp.text.Font titleFont = iTextSharp.text.FontFactory.GetFont(
+                        iTextSharp.text.FontFactory.HELVETICA_BOLD,
+                        18f,
+                        iTextSharp.text.BaseColor.BLACK);
+
+                    iTextSharp.text.Paragraph title = new iTextSharp.text.Paragraph("Horario del Curso", titleFont);
+                    title.Alignment = iTextSharp.text.Element.ALIGN_CENTER;
+                    title.SpacingAfter = 20f;
+                    document.Add(title);
+
+                    // Crear tabla para el horario
+                    iTextSharp.text.pdf.PdfPTable table = new iTextSharp.text.pdf.PdfPTable(6);
+                    table.WidthPercentage = 100;
+
+                    // Configuración de celdas
+                    iTextSharp.text.pdf.PdfPCell cell;
+                    iTextSharp.text.Font headerFont = iTextSharp.text.FontFactory.GetFont(
+                        iTextSharp.text.FontFactory.HELVETICA_BOLD,
+                        10f,
+                        iTextSharp.text.BaseColor.BLACK);
+
+                    iTextSharp.text.Font cellFont = iTextSharp.text.FontFactory.GetFont(
+                        iTextSharp.text.FontFactory.HELVETICA,
+                        9f,
+                        iTextSharp.text.BaseColor.BLACK);
+
+                    // Encabezados de columnas (días de la semana)
+                    string[] dias = { "Hora", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" };
+                    foreach (string dia in dias)
+                    {
+                        cell = new iTextSharp.text.pdf.PdfPCell(new iTextSharp.text.Phrase(dia, headerFont));
+                        cell.HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER;
+                        cell.BackgroundColor = new iTextSharp.text.BaseColor(200, 200, 200);
+                        table.AddCell(cell);
+                    }
+
+                    // Obtener datos del DataGridView y organizarlos
+                    DataTable horarios = (DataTable)dgvHorarios.DataSource;
+                    DataView view = new DataView(horarios);
+                    view.Sort = "hora_inicio ASC";
+
+                    // Agrupar por horas
+                    string[,] celdas = new string[24, 5]; // 24 horas, 5 días
+
+                    foreach (DataRowView row in view)
+                    {
+                        string horaInicio = row["hora_inicio"].ToString().Substring(0, 5);
+                        string dia = row["Dia"].ToString();
+                        string materia = row["Materia"].ToString();
+                        string docente = row["Docente"].ToString();
+
+                        int columna = Array.IndexOf(dias, dia) - 1;
+                        if (columna >= 0 && columna < 5)
+                        {
+                            int fila = int.Parse(horaInicio.Split(':')[0]);
+                            celdas[fila, columna] = $"{materia}\n{docente}";
+                        }
+                    }
+
+                    // Llenar la tabla
+                    for (int hora = 7; hora < 20; hora++)
+                    {
+                        // Celda de hora
+                        cell = new iTextSharp.text.pdf.PdfPCell(
+                            new iTextSharp.text.Phrase($"{hora}:00 - {hora + 1}:00", cellFont));
+                        cell.HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER;
+                        table.AddCell(cell);
+
+                        // Celdas para cada día
+                        for (int dia = 0; dia < 5; dia++)
+                        {
+                            string contenido = celdas[hora, dia] ?? "";
+                            cell = new iTextSharp.text.pdf.PdfPCell(
+                                new iTextSharp.text.Phrase(contenido, cellFont));
+                            cell.HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER;
+                            cell.VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE;
+                            cell.MinimumHeight = 40f;
+                            table.AddCell(cell);
+                        }
+                    }
+
+                    document.Add(table);
+                    document.Close();
+
+                    MessageBox.Show("Horario exportado a PDF correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al exportar a PDF: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void ExportarAWord()
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Documento Word (*.docx)|*.docx";
+            saveFileDialog.Title = "Guardar horario como Word";
+            saveFileDialog.FileName = $"Horario_{DateTime.Now:yyyyMMddHHmmss}.docx";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    Microsoft.Office.Interop.Word.Application wordApp = new Microsoft.Office.Interop.Word.Application();
+                    Microsoft.Office.Interop.Word.Document wordDoc = wordApp.Documents.Add();
+
+                    // Título del documento
+                    Microsoft.Office.Interop.Word.Paragraph titlePara = wordDoc.Paragraphs.Add();
+                    titlePara.Range.Text = "Horario del Curso";
+                    titlePara.Range.Font.Bold = 1;
+                    titlePara.Range.Font.Size = 18;
+                    titlePara.Format.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                    titlePara.Range.InsertParagraphAfter();
+
+                    // Crear tabla
+                    Microsoft.Office.Interop.Word.Table wordTable = wordDoc.Tables.Add(
+                        wordDoc.Paragraphs[1].Range, 14, 6);
+
+                    // Encabezados de columnas
+                    string[] headers = { "Hora", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" };
+                    for (int i = 0; i < headers.Length; i++)
+                    {
+                        wordTable.Cell(1, i + 1).Range.Text = headers[i];
+                        wordTable.Cell(1, i + 1).Range.Font.Bold = 1;
+                        wordTable.Cell(1, i + 1).Range.ParagraphFormat.Alignment =
+                            Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                    }
+
+                    // Obtener datos del DataGridView
+                    DataTable horarios = (DataTable)dgvHorarios.DataSource;
+                    DataView view = new DataView(horarios);
+                    view.Sort = "hora_inicio ASC";
+
+                    // Organizar datos por horas y días
+                    string[,] celdas = new string[24, 5];
+                    foreach (DataRowView row in view)
+                    {
+                        string horaInicio = row["hora_inicio"].ToString().Substring(0, 5);
+                        string dia = row["Dia"].ToString();
+                        string materia = row["Materia"].ToString();
+                        string docente = row["Docente"].ToString();
+
+                        int columna = Array.IndexOf(headers, dia) - 1;
+                        if (columna >= 0 && columna < 5)
+                        {
+                            int fila = int.Parse(horaInicio.Split(':')[0]);
+                            celdas[fila, columna] = $"{materia}\n{docente}";
+                        }
+                    }
+
+                    // Llenar la tabla
+                    for (int hora = 7; hora < 20; hora++)
+                    {
+                        int filaTabla = hora - 6;
+
+                        // Celda de hora
+                        wordTable.Cell(filaTabla + 1, 1).Range.Text = $"{hora}:00 - {hora + 1}:00";
+                        wordTable.Cell(filaTabla + 1, 1).Range.ParagraphFormat.Alignment =
+                            Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+
+                        // Celdas para cada día
+                        for (int dia = 0; dia < 5; dia++)
+                        {
+                            string contenido = celdas[hora, dia] ?? "";
+                            wordTable.Cell(filaTabla + 1, dia + 2).Range.Text = contenido;
+                            wordTable.Cell(filaTabla + 1, dia + 2).Range.ParagraphFormat.Alignment =
+                                Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                        }
+                    }
+
+                    // Ajustar formato de la tabla
+                    wordTable.Rows[1].Range.Font.Bold = 1;
+                    wordTable.Borders.Enable = 1;
+                    wordTable.Rows.Height = wordApp.InchesToPoints(0.5f);
+
+                    // Guardar y cerrar
+                    wordDoc.SaveAs2(saveFileDialog.FileName);
+                    wordDoc.Close();
+                    wordApp.Quit();
+
+                    MessageBox.Show("Horario exportado a Word correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al exportar a Word: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void MostrarVistaPrevia()
+        {
+            try
+            {
+                Form vistaPreviaForm = new Form();
+                vistaPreviaForm.Text = "Vista Previa del Horario";
+                vistaPreviaForm.Size = new Size(800, 600);
+                vistaPreviaForm.StartPosition = FormStartPosition.CenterParent;
+
+                DataGridView dgvVistaPrevia = new DataGridView();
+                dgvVistaPrevia.Dock = DockStyle.Fill;
+                dgvVistaPrevia.ReadOnly = true;
+                dgvVistaPrevia.AllowUserToAddRows = false;
+                dgvVistaPrevia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                // Crear tabla para la vista previa
+                DataTable tablaVistaPrevia = new DataTable();
+                tablaVistaPrevia.Columns.Add("Hora", typeof(string));
+                tablaVistaPrevia.Columns.Add("Lunes", typeof(string));
+                tablaVistaPrevia.Columns.Add("Martes", typeof(string));
+                tablaVistaPrevia.Columns.Add("Miércoles", typeof(string));
+                tablaVistaPrevia.Columns.Add("Jueves", typeof(string));
+                tablaVistaPrevia.Columns.Add("Viernes", typeof(string));
+
+                // Obtener datos del DataGridView
+                DataTable horarios = (DataTable)dgvHorarios.DataSource;
+                DataView view = new DataView(horarios);
+                view.Sort = "hora_inicio ASC";
+
+                // Organizar datos por horas y días
+                string[,] celdas = new string[24, 5];
+                foreach (DataRowView row in view)
+                {
+                    string horaInicio = row["hora_inicio"].ToString().Substring(0, 5);
+                    string dia = row["Dia"].ToString();
+                    string materia = row["Materia"].ToString();
+                    string docente = row["Docente"].ToString();
+
+                    int columna = -1;
+                    switch (dia)
+                    {
+                        case "Lunes": columna = 0; break;
+                        case "Martes": columna = 1; break;
+                        case "Miércoles": columna = 2; break;
+                        case "Jueves": columna = 3; break;
+                        case "Viernes": columna = 4; break;
+                    }
+
+                    if (columna >= 0)
+                    {
+                        int fila = int.Parse(horaInicio.Split(':')[0]);
+                        celdas[fila, columna] = $"{materia}\n({docente})";
+                    }
+                }
+
+                // Llenar la tabla
+                for (int hora = 7; hora < 20; hora++)
+                {
+                    DataRow fila = tablaVistaPrevia.NewRow();
+                    fila["Hora"] = $"{hora}:00 - {hora + 1}:00";
+
+                    for (int dia = 0; dia < 5; dia++)
+                    {
+                        string nombreColumna = "";
+                        switch (dia)
+                        {
+                            case 0: nombreColumna = "Lunes"; break;
+                            case 1: nombreColumna = "Martes"; break;
+                            case 2: nombreColumna = "Miércoles"; break;
+                            case 3: nombreColumna = "Jueves"; break;
+                            case 4: nombreColumna = "Viernes"; break;
+                        }
+
+                        fila[nombreColumna] = celdas[hora, dia] ?? "";
+                    }
+
+                    tablaVistaPrevia.Rows.Add(fila);
+                }
+
+                dgvVistaPrevia.DataSource = tablaVistaPrevia;
+
+                // Ajustar estilo
+                dgvVistaPrevia.RowHeadersVisible = false;
+                dgvVistaPrevia.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGray;
+                dgvVistaPrevia.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font(dgvVistaPrevia.Font, FontStyle.Bold);
+                dgvVistaPrevia.EnableHeadersVisualStyles = false;
+
+                // Botones de exportación
+                Button btnExportarPDF = new Button() { Text = "Exportar a PDF", Width = 120, Top = 10 };
+                Button btnExportarWord = new Button() { Text = "Exportar a Word", Width = 120, Top = 10, Left = 130 };
+
+                btnExportarPDF.Click += (s, ev) => { vistaPreviaForm.DialogResult = DialogResult.Yes; vistaPreviaForm.Close(); };
+                btnExportarWord.Click += (s, ev) => { vistaPreviaForm.DialogResult = DialogResult.No; vistaPreviaForm.Close(); };
+
+                Panel panelBotones = new Panel();
+                panelBotones.Dock = DockStyle.Bottom;
+                panelBotones.Height = 50;
+                panelBotones.Controls.Add(btnExportarPDF);
+                panelBotones.Controls.Add(btnExportarWord);
+
+                vistaPreviaForm.Controls.Add(dgvVistaPrevia);
+                vistaPreviaForm.Controls.Add(panelBotones);
+
+                var result = vistaPreviaForm.ShowDialog();
+
+                if (result == DialogResult.Yes)
+                {
+                    ExportarAPDF();
+                }
+                else if (result == DialogResult.No)
+                {
+                    ExportarAWord();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al mostrar vista previa: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
