@@ -38,6 +38,7 @@
             this.btnEliminarHorario = new System.Windows.Forms.Button();
             this.dtpHoraFin = new System.Windows.Forms.DateTimePicker();
             this.btnCursos = new System.Windows.Forms.Button();
+            this.btnExportar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvHorarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -135,11 +136,22 @@
             this.btnCursos.UseVisualStyleBackColor = true;
             this.btnCursos.Click += new System.EventHandler(this.btnCursos_Click);
             // 
+            // btnExportar
+            // 
+            this.btnExportar.Location = new System.Drawing.Point(519, 333);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(75, 23);
+            this.btnExportar.TabIndex = 10;
+            this.btnExportar.Text = "Exportar ";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
             // Cursos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 450);
+            this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.btnCursos);
             this.Controls.Add(this.dtpHoraFin);
             this.Controls.Add(this.btnEliminarHorario);
@@ -169,5 +181,6 @@
         private System.Windows.Forms.Button btnEliminarHorario;
         private System.Windows.Forms.DateTimePicker dtpHoraFin;
         private System.Windows.Forms.Button btnCursos;
+        private System.Windows.Forms.Button btnExportar;
     }
 }

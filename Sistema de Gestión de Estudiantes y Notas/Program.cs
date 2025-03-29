@@ -18,7 +18,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Cursos1());
+            Application.Run(new Cursos());
 
         }
     }
