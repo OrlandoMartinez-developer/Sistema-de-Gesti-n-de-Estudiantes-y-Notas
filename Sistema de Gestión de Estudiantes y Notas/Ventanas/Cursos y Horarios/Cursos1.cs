@@ -251,5 +251,10 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios
         {
             // Puedes implementar lógica adicional si necesitas manejar clicks específicos en celdas
         }
+
+        private void lblCursoEstudiante_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
