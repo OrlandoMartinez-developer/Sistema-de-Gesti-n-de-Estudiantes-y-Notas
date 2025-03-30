@@ -144,6 +144,18 @@
     <Compile Include="Ventanas\FrmInicio.Designer.cs">
       <DependentUpon>FrmInicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Ventanas\Modulo Estudiante\Estudiantes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Modulo Estudiante\Estudiantes.Designer.cs">
+      <DependentUpon>Estudiantes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Modulo Materia\Materia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Modulo Materia\Materia.Designer.cs">
+      <DependentUpon>Materia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\Modulo Notas\FrmNotas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +190,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\FrmInicio.resx">
       <DependentUpon>FrmInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Modulo Estudiante\Estudiantes.resx">
+      <DependentUpon>Estudiantes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Modulo Materia\Materia.resx">
+      <DependentUpon>Materia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Modulo Notas\FrmNotas.resx">
       <DependentUpon>FrmNotas.cs</DependentUpon>
