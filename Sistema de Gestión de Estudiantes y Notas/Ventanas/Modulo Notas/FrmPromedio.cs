@@ -142,6 +142,10 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas
             }
         }
 
+        private void lblPromedio_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
     // Clase auxiliar para manejar los valores en los ComboBox

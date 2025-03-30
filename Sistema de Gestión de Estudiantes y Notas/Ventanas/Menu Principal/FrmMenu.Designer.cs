@@ -37,8 +37,9 @@
             this.cursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.notasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.NotasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.graficoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.promedioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,6 +77,8 @@
             // 
             // notasToolStripMenuItem
             // 
+            this.notasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.promedioToolStripMenuItem});
             this.notasToolStripMenuItem.Font = new System.Drawing.Font("Gabriola", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.notasToolStripMenuItem.Name = "notasToolStripMenuItem";
             this.notasToolStripMenuItem.Size = new System.Drawing.Size(67, 39);
@@ -110,24 +113,33 @@
             // reportesToolStripMenuItem
             // 
             this.reportesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.notasToolStripMenuItem1,
+            this.NotasToolStripMenuItem1,
             this.graficoToolStripMenuItem});
             this.reportesToolStripMenuItem.Font = new System.Drawing.Font("Gabriola", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
             this.reportesToolStripMenuItem.Size = new System.Drawing.Size(87, 39);
             this.reportesToolStripMenuItem.Text = "Reportes";
             // 
-            // notasToolStripMenuItem1
+            // NotasToolStripMenuItem1
             // 
-            this.notasToolStripMenuItem1.Name = "notasToolStripMenuItem1";
-            this.notasToolStripMenuItem1.Size = new System.Drawing.Size(140, 40);
-            this.notasToolStripMenuItem1.Text = "Notas";
+            this.NotasToolStripMenuItem1.Name = "NotasToolStripMenuItem1";
+            this.NotasToolStripMenuItem1.Size = new System.Drawing.Size(180, 40);
+            this.NotasToolStripMenuItem1.Text = "Notas";
+            this.NotasToolStripMenuItem1.Click += new System.EventHandler(this.NotasToolStripMenuItem1_Click);
             // 
             // graficoToolStripMenuItem
             // 
             this.graficoToolStripMenuItem.Name = "graficoToolStripMenuItem";
-            this.graficoToolStripMenuItem.Size = new System.Drawing.Size(140, 40);
+            this.graficoToolStripMenuItem.Size = new System.Drawing.Size(180, 40);
             this.graficoToolStripMenuItem.Text = "Grafico";
+            this.graficoToolStripMenuItem.Click += new System.EventHandler(this.graficoToolStripMenuItem_Click);
+            // 
+            // promedioToolStripMenuItem
+            // 
+            this.promedioToolStripMenuItem.Name = "promedioToolStripMenuItem";
+            this.promedioToolStripMenuItem.Size = new System.Drawing.Size(180, 40);
+            this.promedioToolStripMenuItem.Text = "Promedio";
+            this.promedioToolStripMenuItem.Click += new System.EventHandler(this.promedioToolStripMenuItem_Click);
             // 
             // FrmMenu
             // 
@@ -157,8 +169,9 @@
         private System.Windows.Forms.ToolStripMenuItem materiasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cursosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem notasToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem NotasToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem graficoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem horariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem promedioToolStripMenuItem;
     }
 }
