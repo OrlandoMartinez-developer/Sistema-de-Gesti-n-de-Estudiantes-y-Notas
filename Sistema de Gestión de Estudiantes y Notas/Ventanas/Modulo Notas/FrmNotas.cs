@@ -530,5 +530,15 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
             ReporteDeNotas reporte = new ReporteDeNotas();
             reporte.ShowDialog();
         }
+
+        private void dgvNotas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -126,6 +126,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\ConexionBD.cs" />
+
+    <Compile Include="Ventanas\Form_Docentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Form_Docentes.Designer.cs">
+      <DependentUpon>Form_Docentes.cs</DependentUpon>
+
     <Compile Include="Ventanas\Cursos y Horarios\Cursos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +144,7 @@
     </Compile>
     <Compile Include="Ventanas\Cursos y Horarios\Cursos1.Designer.cs">
       <DependentUpon>Cursos1.cs</DependentUpon>
+
     </Compile>
     <Compile Include="Ventanas\FrmInicio.cs">
       <SubType>Form</SubType>
@@ -188,11 +196,16 @@
     <Compile Include="Ventanas\Modulo Notas\ReporteGrafico.Designer.cs">
       <DependentUpon>ReporteGrafico.cs</DependentUpon>
     </Compile>
+ Desarrollo_Johan1
+    <EmbeddedResource Include="Ventanas\Form_Docentes.resx">
+      <DependentUpon>Form_Docentes.cs</DependentUpon>
+
     <EmbeddedResource Include="Ventanas\Cursos y Horarios\Cursos.resx">
       <DependentUpon>Cursos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Cursos y Horarios\Cursos1.resx">
       <DependentUpon>Cursos1.cs</DependentUpon>
+ master
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\FrmInicio.resx">
       <DependentUpon>FrmInicio.cs</DependentUpon>
@@ -257,6 +270,8 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Clases\Clases_VDocentes\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
