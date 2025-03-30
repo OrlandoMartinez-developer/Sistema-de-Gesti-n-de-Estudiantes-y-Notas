@@ -19,7 +19,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal
             this.IsMdiContainer = true; // Convierte el formulario en un contenedor 
         }
 
-
+        // Esto nos permite acceder a los formularios desde el menú principal
         private void AbrirFormulario(Form formulario)
         {
             formulario.MdiParent = this;
@@ -30,18 +30,28 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal
         }
         private void cursosYHorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FrmInicio frmInicio = new FrmInicio();
+            AbrirFormulario(frmInicio);
+            Show();
         }
 
         private void estudiantesToolStripMenuItem_Click(object sender, EventArgs e)
         {
               Estudiantes frmEstudiantes = new Estudiantes();
             AbrirFormulario(frmEstudiantes);
+            Show();
+        }
+
+        private void notasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmNotas frmNotas = new FrmNotas();
+            AbrirFormulario(frmNotas);
+            Show();
         }
     }
 }
