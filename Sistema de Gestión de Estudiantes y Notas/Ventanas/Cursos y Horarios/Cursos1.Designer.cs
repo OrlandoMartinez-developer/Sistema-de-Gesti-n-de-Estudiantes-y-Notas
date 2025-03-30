@@ -90,7 +90,10 @@
             this.lblCursoEstudiante.TabIndex = 5;
             this.lblCursoEstudiante.Text = "Curso del Etudiante";
             this.lblCursoEstudiante.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+
             this.lblCursoEstudiante.Click += new System.EventHandler(this.lblCursoEstudiante_Click);
+
+
             // 
             // Cursos1
             // 

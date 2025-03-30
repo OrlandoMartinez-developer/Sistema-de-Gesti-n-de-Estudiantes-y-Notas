@@ -115,6 +115,29 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
         }
 
 
+        private void dgvNotas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewRow fila = dgvNotas.Rows[e.RowIndex];
+                    string estudiante = fila.Cells["estudiante"].Value.ToString();
+                    string curso = fila.Cells["curso"].Value.ToString();
+                    string materia = fila.Cells["materia"].Value.ToString();
+                    string calificacion = fila.Cells["calificacion"].Value.ToString();
+                    cmbEstudiantes.SelectedItem = estudiante;
+                    cmbCurso.SelectedItem = curso;
+                    cmbMateria.SelectedItem = materia;
+                    TxtNota.Text = calificacion;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al seleccionar la fila: " + ex.Message);
+            }
+        }
+
         private void CargarMaterias(System.Windows.Forms.ComboBox cmbMateria)
         {
             try
