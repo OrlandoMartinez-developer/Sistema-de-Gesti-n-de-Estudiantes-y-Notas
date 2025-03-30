@@ -122,6 +122,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\ConexionBD.cs" />
+    <Compile Include="Ventanas\Form_Docentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Form_Docentes.Designer.cs">
+      <DependentUpon>Form_Docentes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ventanas\FrmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,9 @@
     <Compile Include="Ventanas\Modulo Notas\ReporteGrafico.Designer.cs">
       <DependentUpon>ReporteGrafico.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Ventanas\Form_Docentes.resx">
+      <DependentUpon>Form_Docentes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\FrmInicio.resx">
       <DependentUpon>FrmInicio.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +217,8 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Clases\Clases_VDocentes\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -38,8 +38,8 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btneliminar = new System.Windows.Forms.Button();
             this.btnpromedio = new System.Windows.Forms.Button();
-            this.estudianteServiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnReporte = new System.Windows.Forms.Button();
+            this.estudianteServiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.estudianteServiceBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -84,6 +84,7 @@
             this.dgvNotas.Name = "dgvNotas";
             this.dgvNotas.Size = new System.Drawing.Size(544, 546);
             this.dgvNotas.TabIndex = 4;
+            this.dgvNotas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNotas_CellContentClick);
             // 
             // cmbCurso
             // 
