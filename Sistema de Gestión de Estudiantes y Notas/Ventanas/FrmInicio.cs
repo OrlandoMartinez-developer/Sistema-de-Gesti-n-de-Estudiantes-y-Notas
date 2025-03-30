@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios;
+using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal;
 using System;
 using System.Windows.Forms;
 using TuProyecto;
@@ -25,7 +26,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
             {
                 try
                 {
-                    connection.Open();
+                    
                     using (var cmd = new MySqlCommand(query, connection))
                     {
                         cmd.Parameters.AddWithValue("@usuario", usuario);
@@ -64,10 +65,10 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
                 switch (tipoUsuario)
                 {
                     case "Administrador":
-                        new FrmNotas().Show();
+                        new FrmMenu().Show();
                         break;
                     case "Docente":
-                        new Cursos().Show();
+                        new FrmMenu().Show();
                         break;
                     default:
                         MessageBox.Show("Tipo de usuario no reconocido.");

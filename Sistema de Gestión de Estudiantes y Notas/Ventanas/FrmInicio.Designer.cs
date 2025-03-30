@@ -55,7 +55,7 @@
             // 
             this.texusuario.Font = new System.Drawing.Font("Gabriola", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.texusuario.Location = new System.Drawing.Point(290, 88);
-            this.texusuario.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.texusuario.Margin = new System.Windows.Forms.Padding(2);
             this.texusuario.Name = "texusuario";
             this.texusuario.Size = new System.Drawing.Size(156, 35);
             this.texusuario.TabIndex = 1;
@@ -65,10 +65,11 @@
             // 
             this.texcontrasena.Font = new System.Drawing.Font("Gabriola", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.texcontrasena.Location = new System.Drawing.Point(290, 166);
-            this.texcontrasena.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.texcontrasena.Margin = new System.Windows.Forms.Padding(2);
             this.texcontrasena.Name = "texcontrasena";
             this.texcontrasena.Size = new System.Drawing.Size(156, 35);
             this.texcontrasena.TabIndex = 2;
+            this.texcontrasena.UseSystemPasswordChar = true;
             // 
             // pictureBox1
             // 
