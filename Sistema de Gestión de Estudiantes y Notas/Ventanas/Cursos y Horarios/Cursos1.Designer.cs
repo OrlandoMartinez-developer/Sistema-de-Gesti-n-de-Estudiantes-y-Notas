@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Cursos1));
             this.dgvCursos = new System.Windows.Forms.DataGridView();
             this.txtCurso = new System.Windows.Forms.TextBox();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -48,9 +49,9 @@
             // 
             // txtCurso
             // 
-            this.txtCurso.Location = new System.Drawing.Point(215, 116);
+            this.txtCurso.Location = new System.Drawing.Point(227, 120);
             this.txtCurso.Name = "txtCurso";
-            this.txtCurso.Size = new System.Drawing.Size(83, 20);
+            this.txtCurso.Size = new System.Drawing.Size(73, 20);
             this.txtCurso.TabIndex = 1;
             // 
             // btnAgregar
@@ -76,9 +77,9 @@
             // cmbEstudiante
             // 
             this.cmbEstudiante.FormattingEnabled = true;
-            this.cmbEstudiante.Location = new System.Drawing.Point(310, 116);
+            this.cmbEstudiante.Location = new System.Drawing.Point(322, 120);
             this.cmbEstudiante.Name = "cmbEstudiante";
-            this.cmbEstudiante.Size = new System.Drawing.Size(94, 21);
+            this.cmbEstudiante.Size = new System.Drawing.Size(84, 21);
             this.cmbEstudiante.TabIndex = 4;
             // 
             // lblCursoEstudiante
@@ -90,22 +91,22 @@
             this.lblCursoEstudiante.TabIndex = 5;
             this.lblCursoEstudiante.Text = "Curso del Etudiante";
             this.lblCursoEstudiante.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-
             this.lblCursoEstudiante.Click += new System.EventHandler(this.lblCursoEstudiante_Click);
-
-
             // 
             // Cursos1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(468, 350);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(491, 366);
             this.Controls.Add(this.lblCursoEstudiante);
             this.Controls.Add(this.cmbEstudiante);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.txtCurso);
             this.Controls.Add(this.dgvCursos);
+            this.DoubleBuffered = true;
             this.Name = "Cursos1";
             this.Text = "Cursos1";
             ((System.ComponentModel.ISupportInitialize)(this.dgvCursos)).EndInit();

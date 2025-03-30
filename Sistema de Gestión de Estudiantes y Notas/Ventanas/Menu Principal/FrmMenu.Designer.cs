@@ -38,6 +38,7 @@
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.graficoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.horariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +54,7 @@
             this.reportesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 43);
+            this.menuStrip1.Size = new System.Drawing.Size(848, 43);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -90,10 +91,12 @@
             // 
             // cursosYHorToolStripMenuItem
             // 
+            this.cursosYHorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.horariosToolStripMenuItem});
             this.cursosYHorToolStripMenuItem.Font = new System.Drawing.Font("Gabriola", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cursosYHorToolStripMenuItem.Name = "cursosYHorToolStripMenuItem";
-            this.cursosYHorToolStripMenuItem.Size = new System.Drawing.Size(154, 39);
-            this.cursosYHorToolStripMenuItem.Text = "Cursos Y Horarios";
+            this.cursosYHorToolStripMenuItem.Size = new System.Drawing.Size(75, 39);
+            this.cursosYHorToolStripMenuItem.Text = "Cursos";
             this.cursosYHorToolStripMenuItem.Click += new System.EventHandler(this.cursosYHorToolStripMenuItem_Click);
             // 
             // reportesToolStripMenuItem
@@ -109,14 +112,21 @@
             // notasToolStripMenuItem1
             // 
             this.notasToolStripMenuItem1.Name = "notasToolStripMenuItem1";
-            this.notasToolStripMenuItem1.Size = new System.Drawing.Size(180, 40);
+            this.notasToolStripMenuItem1.Size = new System.Drawing.Size(140, 40);
             this.notasToolStripMenuItem1.Text = "Notas";
             // 
             // graficoToolStripMenuItem
             // 
             this.graficoToolStripMenuItem.Name = "graficoToolStripMenuItem";
-            this.graficoToolStripMenuItem.Size = new System.Drawing.Size(180, 40);
+            this.graficoToolStripMenuItem.Size = new System.Drawing.Size(140, 40);
             this.graficoToolStripMenuItem.Text = "Grafico";
+            // 
+            // horariosToolStripMenuItem
+            // 
+            this.horariosToolStripMenuItem.Name = "horariosToolStripMenuItem";
+            this.horariosToolStripMenuItem.Size = new System.Drawing.Size(180, 40);
+            this.horariosToolStripMenuItem.Text = "Horarios";
+            this.horariosToolStripMenuItem.Click += new System.EventHandler(this.horariosToolStripMenuItem_Click);
             // 
             // FrmMenu
             // 
@@ -124,7 +134,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(848, 469);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip1;
@@ -148,5 +158,6 @@
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem notasToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem graficoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem horariosToolStripMenuItem;
     }
 }

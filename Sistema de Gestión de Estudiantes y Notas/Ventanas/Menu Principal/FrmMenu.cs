@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios;
 using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Estudiante;
 
 namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal
@@ -50,7 +51,8 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal
         private void cursosYHorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Aquí deberías abrir el formulario de Cursos y Horarios
-            
+           
+
         }
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -71,6 +73,10 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal
             AbrirFormulario(frmNotas);
         }
 
-        
+        private void horariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursos1 frmCursos = new Cursos1();
+            AbrirFormulario(frmCursos);
+        }
     }
 }
