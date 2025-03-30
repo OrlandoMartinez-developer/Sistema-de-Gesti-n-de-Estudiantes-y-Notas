@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Materia));
             this.dgvMaterias = new System.Windows.Forms.DataGridView();
             this.txtMateria = new System.Windows.Forms.TextBox();
             this.cmbMaestro = new System.Windows.Forms.ComboBox();
@@ -41,47 +42,55 @@
             this.dgvMaterias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMaterias.Location = new System.Drawing.Point(51, 61);
             this.dgvMaterias.Name = "dgvMaterias";
-            this.dgvMaterias.Size = new System.Drawing.Size(177, 234);
+            this.dgvMaterias.Size = new System.Drawing.Size(225, 231);
             this.dgvMaterias.TabIndex = 0;
             // 
             // txtMateria
             // 
-            this.txtMateria.Location = new System.Drawing.Point(282, 109);
+            this.txtMateria.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMateria.Location = new System.Drawing.Point(300, 136);
             this.txtMateria.Name = "txtMateria";
-            this.txtMateria.Size = new System.Drawing.Size(121, 20);
+            this.txtMateria.Size = new System.Drawing.Size(146, 29);
             this.txtMateria.TabIndex = 1;
             // 
             // cmbMaestro
             // 
+            this.cmbMaestro.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMaestro.FormattingEnabled = true;
-            this.cmbMaestro.Location = new System.Drawing.Point(282, 158);
+            this.cmbMaestro.Location = new System.Drawing.Point(300, 185);
             this.cmbMaestro.Name = "cmbMaestro";
-            this.cmbMaestro.Size = new System.Drawing.Size(121, 21);
+            this.cmbMaestro.Size = new System.Drawing.Size(146, 31);
             this.cmbMaestro.TabIndex = 2;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(272, 218);
+            this.btnAgregar.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnAgregar.Font = new System.Drawing.Font("Gabriola", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Location = new System.Drawing.Point(162, 341);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.Size = new System.Drawing.Size(89, 42);
             this.btnAgregar.TabIndex = 3;
             this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.UseVisualStyleBackColor = false;
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(364, 218);
+            this.btnEliminar.BackColor = System.Drawing.Color.OrangeRed;
+            this.btnEliminar.Font = new System.Drawing.Font("Gabriola", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminar.Location = new System.Drawing.Point(286, 341);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.Size = new System.Drawing.Size(89, 42);
             this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.UseVisualStyleBackColor = false;
             // 
             // Materia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(474, 450);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(518, 451);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.cmbMaestro);

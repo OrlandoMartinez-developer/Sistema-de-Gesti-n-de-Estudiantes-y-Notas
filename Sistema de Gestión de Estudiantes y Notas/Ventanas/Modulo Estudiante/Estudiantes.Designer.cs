@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Estudiantes));
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtCorreo = new System.Windows.Forms.TextBox();
             this.txtFechaN = new System.Windows.Forms.TextBox();
@@ -44,44 +45,50 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(91, 331);
+            this.txtNombre.Font = new System.Drawing.Font("Gabriola", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.Location = new System.Drawing.Point(84, 317);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(100, 20);
+            this.txtNombre.Size = new System.Drawing.Size(100, 35);
             this.txtNombre.TabIndex = 0;
             // 
             // txtCorreo
             // 
-            this.txtCorreo.Location = new System.Drawing.Point(475, 331);
+            this.txtCorreo.Font = new System.Drawing.Font("Gabriola", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCorreo.Location = new System.Drawing.Point(468, 317);
             this.txtCorreo.Name = "txtCorreo";
-            this.txtCorreo.Size = new System.Drawing.Size(100, 20);
+            this.txtCorreo.Size = new System.Drawing.Size(100, 35);
             this.txtCorreo.TabIndex = 1;
             // 
             // txtFechaN
             // 
-            this.txtFechaN.Location = new System.Drawing.Point(350, 331);
+            this.txtFechaN.Font = new System.Drawing.Font("Gabriola", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFechaN.Location = new System.Drawing.Point(343, 317);
             this.txtFechaN.Name = "txtFechaN";
-            this.txtFechaN.Size = new System.Drawing.Size(100, 20);
+            this.txtFechaN.Size = new System.Drawing.Size(100, 35);
             this.txtFechaN.TabIndex = 3;
             // 
             // txtApellido
             // 
-            this.txtApellido.Location = new System.Drawing.Point(220, 331);
+            this.txtApellido.Font = new System.Drawing.Font("Gabriola", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtApellido.Location = new System.Drawing.Point(213, 317);
             this.txtApellido.Name = "txtApellido";
-            this.txtApellido.Size = new System.Drawing.Size(100, 20);
+            this.txtApellido.Size = new System.Drawing.Size(100, 35);
             this.txtApellido.TabIndex = 5;
             // 
             // txtDireccion
             // 
-            this.txtDireccion.Location = new System.Drawing.Point(220, 374);
+            this.txtDireccion.Font = new System.Drawing.Font("Gabriola", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDireccion.Location = new System.Drawing.Point(213, 360);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(100, 20);
+            this.txtDireccion.Size = new System.Drawing.Size(100, 35);
             this.txtDireccion.TabIndex = 6;
             // 
             // txtTelefono
             // 
-            this.txtTelefono.Location = new System.Drawing.Point(91, 374);
+            this.txtTelefono.Font = new System.Drawing.Font("Gabriola", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelefono.Location = new System.Drawing.Point(84, 360);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(100, 20);
+            this.txtTelefono.Size = new System.Drawing.Size(100, 35);
             this.txtTelefono.TabIndex = 7;
             // 
             // button1
@@ -104,6 +111,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(34, 58);
             this.dataGridView1.Name = "dataGridView1";
@@ -112,24 +120,28 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.Font = new System.Drawing.Font("Gabriola", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(329, 376);
+            this.comboBox1.Location = new System.Drawing.Point(322, 362);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.Size = new System.Drawing.Size(121, 37);
             this.comboBox1.TabIndex = 11;
             // 
             // comboBox2
             // 
+            this.comboBox2.Font = new System.Drawing.Font("Gabriola", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(477, 376);
+            this.comboBox2.Location = new System.Drawing.Point(470, 362);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.Size = new System.Drawing.Size(121, 37);
             this.comboBox2.TabIndex = 12;
             // 
             // Estudiantes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);

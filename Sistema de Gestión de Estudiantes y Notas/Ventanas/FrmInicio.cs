@@ -80,5 +80,10 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
                 MessageBox.Show("Usuario o contraseña incorrectos.");
             }
         }
+
+        private void texusuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
