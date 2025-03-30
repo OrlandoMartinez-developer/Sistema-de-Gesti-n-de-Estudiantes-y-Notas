@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -72,6 +72,10 @@
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1004\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="MySql.Data, Version=9.2.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.9.2.0\lib\net462\MySql.Data.dll</HintPath>
     </Reference>
@@ -122,17 +126,49 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\ConexionBD.cs" />
+
     <Compile Include="Ventanas\Form_Docentes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ventanas\Form_Docentes.Designer.cs">
       <DependentUpon>Form_Docentes.cs</DependentUpon>
+
+    <Compile Include="Ventanas\Cursos y Horarios\Cursos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Cursos y Horarios\Cursos.Designer.cs">
+      <DependentUpon>Cursos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Cursos y Horarios\Cursos1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Cursos y Horarios\Cursos1.Designer.cs">
+      <DependentUpon>Cursos1.cs</DependentUpon>
+
     </Compile>
     <Compile Include="Ventanas\FrmInicio.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ventanas\FrmInicio.Designer.cs">
       <DependentUpon>FrmInicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Menu Principal\FrmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Menu Principal\FrmMenu.Designer.cs">
+      <DependentUpon>FrmMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Modulo Estudiante\Estudiantes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Modulo Estudiante\Estudiantes.Designer.cs">
+      <DependentUpon>Estudiantes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\Modulo Materia\Materia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Modulo Materia\Materia.Designer.cs">
+      <DependentUpon>Materia.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\Modulo Notas\FrmNotas.cs">
       <SubType>Form</SubType>
@@ -160,11 +196,28 @@
     <Compile Include="Ventanas\Modulo Notas\ReporteGrafico.Designer.cs">
       <DependentUpon>ReporteGrafico.cs</DependentUpon>
     </Compile>
+ Desarrollo_Johan1
     <EmbeddedResource Include="Ventanas\Form_Docentes.resx">
       <DependentUpon>Form_Docentes.cs</DependentUpon>
+
+    <EmbeddedResource Include="Ventanas\Cursos y Horarios\Cursos.resx">
+      <DependentUpon>Cursos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Cursos y Horarios\Cursos1.resx">
+      <DependentUpon>Cursos1.cs</DependentUpon>
+ master
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\FrmInicio.resx">
       <DependentUpon>FrmInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Menu Principal\FrmMenu.resx">
+      <DependentUpon>FrmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Modulo Estudiante\Estudiantes.resx">
+      <DependentUpon>Estudiantes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Modulo Materia\Materia.resx">
+      <DependentUpon>Materia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Modulo Notas\FrmNotas.resx">
       <DependentUpon>FrmNotas.cs</DependentUpon>

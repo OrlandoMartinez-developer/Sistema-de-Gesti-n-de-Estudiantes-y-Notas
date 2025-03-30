@@ -42,7 +42,7 @@
             this.chartReporte.Cursor = System.Windows.Forms.Cursors.No;
             legend1.Name = "Legend1";
             this.chartReporte.Legends.Add(legend1);
-            this.chartReporte.Location = new System.Drawing.Point(1, 0);
+            this.chartReporte.Location = new System.Drawing.Point(3, 1);
             this.chartReporte.Name = "chartReporte";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
