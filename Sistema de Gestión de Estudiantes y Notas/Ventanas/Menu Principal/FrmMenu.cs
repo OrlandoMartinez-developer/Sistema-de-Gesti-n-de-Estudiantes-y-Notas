@@ -16,20 +16,40 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal
         public FrmMenu()
         {
             InitializeComponent();
-            this.IsMdiContainer = true; // Convierte el formulario en un contenedor 
+            this.IsMdiContainer = true;
+            this.AutoSize = true;
+            this.MinimumSize = new Size(1024, 768); // Tamaño inicial recomendado
+            
         }
 
-        // Esto nos permite acceder a los formularios desde el menú principal
         private void AbrirFormulario(Form formulario)
         {
+            // Cerrar el formulario hijo actual si existe
+            if (this.MdiChildren.Length > 0)
+            {
+                foreach (Form childForm in this.MdiChildren)
+                {
+                    childForm.Close();
+                }
+            }
+
             formulario.MdiParent = this;
             formulario.StartPosition = FormStartPosition.CenterScreen;
             formulario.FormBorderStyle = FormBorderStyle.None;
-            formulario.Dock = DockStyle.Fill;
+
+            // Mostrar el formulario antes de ajustar el tamaño para que sus dimensiones sean correctas
             formulario.Show();
+
+            // Ajustar el tamaño del formulario principal al del formulario hijo
+            this.ClientSize = new Size(formulario.Width, formulario.Height + menuStrip1.Height);
+
+            // Asegurarse de que el formulario hijo ocupe todo el espacio disponible
+            formulario.Dock = DockStyle.Fill;
         }
+
         private void cursosYHorToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Aquí deberías abrir el formulario de Cursos y Horarios
             
         }
 
@@ -37,21 +57,20 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal
         {
             FrmInicio frmInicio = new FrmInicio();
             AbrirFormulario(frmInicio);
-            Show();
         }
 
         private void estudiantesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-              Estudiantes frmEstudiantes = new Estudiantes();
+            Estudiantes frmEstudiantes = new Estudiantes();
             AbrirFormulario(frmEstudiantes);
-            Show();
         }
 
         private void notasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmNotas frmNotas = new FrmNotas();
             AbrirFormulario(frmNotas);
-            Show();
         }
+
+        
     }
 }
