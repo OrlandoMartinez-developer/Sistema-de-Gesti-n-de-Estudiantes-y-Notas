@@ -7,7 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios;
 using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Estudiante;
+using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Materia;
+using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Notas;
 
 namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal
 {
@@ -47,10 +50,12 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal
             formulario.Dock = DockStyle.Fill;
         }
 
-        private void cursosYHorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void cursosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Aquí deberías abrir el formulario de Cursos y Horarios
-            
+            // Aquí deberías abrir el formulario de Cursos 
+           
+            Cursos cursos = new Cursos();
+            AbrirFormulario(cursos);
         }
 
         private void inicioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -71,6 +76,31 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal
             AbrirFormulario(frmNotas);
         }
 
-        
+        private void horariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cursos1 frmCursos = new Cursos1();
+            AbrirFormulario(frmCursos);
+        }
+
+        private void materiasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void NotasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void promedioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmPromedio frmPromedio = new FrmPromedio();
+            AbrirFormulario(frmPromedio);
+        }
+
+        private void graficoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
