@@ -126,13 +126,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\ConexionBD.cs" />
-
-    <Compile Include="Ventanas\Form_Docentes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Ventanas\Form_Docentes.Designer.cs">
-      <DependentUpon>Form_Docentes.cs</DependentUpon>
-
     <Compile Include="Ventanas\Cursos y Horarios\Cursos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,7 +137,12 @@
     </Compile>
     <Compile Include="Ventanas\Cursos y Horarios\Cursos1.Designer.cs">
       <DependentUpon>Cursos1.cs</DependentUpon>
-
+    </Compile>
+    <Compile Include="Ventanas\Docentes\Form_Docentes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Docentes\Form_Docentes.Designer.cs">
+      <DependentUpon>Form_Docentes.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\FrmInicio.cs">
       <SubType>Form</SubType>
@@ -164,11 +162,11 @@
     <Compile Include="Ventanas\Modulo Estudiante\Estudiantes.Designer.cs">
       <DependentUpon>Estudiantes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ventanas\Modulo Materia\Materia.cs">
+    <Compile Include="Ventanas\Modulo Materia\Materias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventanas\Modulo Materia\Materia.Designer.cs">
-      <DependentUpon>Materia.cs</DependentUpon>
+    <Compile Include="Ventanas\Modulo Materia\Materias.Designer.cs">
+      <DependentUpon>Materias.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\Modulo Notas\FrmNotas.cs">
       <SubType>Form</SubType>
@@ -196,16 +194,14 @@
     <Compile Include="Ventanas\Modulo Notas\ReporteGrafico.Designer.cs">
       <DependentUpon>ReporteGrafico.cs</DependentUpon>
     </Compile>
- Desarrollo_Johan1
-    <EmbeddedResource Include="Ventanas\Form_Docentes.resx">
-      <DependentUpon>Form_Docentes.cs</DependentUpon>
-
     <EmbeddedResource Include="Ventanas\Cursos y Horarios\Cursos.resx">
       <DependentUpon>Cursos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Cursos y Horarios\Cursos1.resx">
       <DependentUpon>Cursos1.cs</DependentUpon>
- master
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\Docentes\Form_Docentes.resx">
+      <DependentUpon>Form_Docentes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\FrmInicio.resx">
       <DependentUpon>FrmInicio.cs</DependentUpon>
@@ -216,8 +212,8 @@
     <EmbeddedResource Include="Ventanas\Modulo Estudiante\Estudiantes.resx">
       <DependentUpon>Estudiantes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ventanas\Modulo Materia\Materia.resx">
-      <DependentUpon>Materia.cs</DependentUpon>
+    <EmbeddedResource Include="Ventanas\Modulo Materia\Materias.resx">
+      <DependentUpon>Materias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Modulo Notas\FrmNotas.resx">
       <DependentUpon>FrmNotas.cs</DependentUpon>

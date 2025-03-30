@@ -58,11 +58,11 @@
             // 
             // lblPromedio
             // 
-            this.lblPromedio.BackColor = System.Drawing.SystemColors.Window;
+            this.lblPromedio.BackColor = System.Drawing.Color.Transparent;
             this.lblPromedio.Font = new System.Drawing.Font("Gabriola", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPromedio.Location = new System.Drawing.Point(118, 21);
+            this.lblPromedio.Location = new System.Drawing.Point(41, 28);
             this.lblPromedio.Name = "lblPromedio";
-            this.lblPromedio.Size = new System.Drawing.Size(170, 65);
+            this.lblPromedio.Size = new System.Drawing.Size(317, 65);
             this.lblPromedio.TabIndex = 3;
             this.lblPromedio.Text = "Promedio";
             this.lblPromedio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

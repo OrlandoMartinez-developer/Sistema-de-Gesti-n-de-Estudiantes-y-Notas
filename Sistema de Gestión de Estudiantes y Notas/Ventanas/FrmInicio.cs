@@ -65,10 +65,10 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
                 switch (tipoUsuario)
                 {
                     case "Administrador":
-                        new FrmMenu().Show();
+                        new Ventanas.Menu_Principal.FrmMenu().Show();
                         break;
                     case "Docente":
-                        new FrmMenu().Show();
+                        new Ventanas.Menu_Principal.FrmMenu().Show();
                         break;
                     default:
                         MessageBox.Show("Tipo de usuario no reconocido.");

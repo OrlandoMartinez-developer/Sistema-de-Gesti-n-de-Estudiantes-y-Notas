@@ -13,6 +13,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas
 
         public FrmPromedio()
         {
+         
             InitializeComponent();
             CargarEstudiantes(cmbEstudiantes);
             CargarCursos(cmbCurso);

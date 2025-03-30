@@ -33,13 +33,13 @@
             this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estudiantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.promedioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.materiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cursosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.horariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NotasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.graficoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.promedioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,6 +85,13 @@
             this.notasToolStripMenuItem.Text = "Notas";
             this.notasToolStripMenuItem.Click += new System.EventHandler(this.notasToolStripMenuItem_Click);
             // 
+            // promedioToolStripMenuItem
+            // 
+            this.promedioToolStripMenuItem.Name = "promedioToolStripMenuItem";
+            this.promedioToolStripMenuItem.Size = new System.Drawing.Size(156, 40);
+            this.promedioToolStripMenuItem.Text = "Promedio";
+            this.promedioToolStripMenuItem.Click += new System.EventHandler(this.promedioToolStripMenuItem_Click);
+            // 
             // materiasToolStripMenuItem
             // 
             this.materiasToolStripMenuItem.Font = new System.Drawing.Font("Gabriola", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -123,23 +130,16 @@
             // NotasToolStripMenuItem1
             // 
             this.NotasToolStripMenuItem1.Name = "NotasToolStripMenuItem1";
-            this.NotasToolStripMenuItem1.Size = new System.Drawing.Size(180, 40);
+            this.NotasToolStripMenuItem1.Size = new System.Drawing.Size(140, 40);
             this.NotasToolStripMenuItem1.Text = "Notas";
             this.NotasToolStripMenuItem1.Click += new System.EventHandler(this.NotasToolStripMenuItem1_Click);
             // 
             // graficoToolStripMenuItem
             // 
             this.graficoToolStripMenuItem.Name = "graficoToolStripMenuItem";
-            this.graficoToolStripMenuItem.Size = new System.Drawing.Size(180, 40);
+            this.graficoToolStripMenuItem.Size = new System.Drawing.Size(140, 40);
             this.graficoToolStripMenuItem.Text = "Grafico";
             this.graficoToolStripMenuItem.Click += new System.EventHandler(this.graficoToolStripMenuItem_Click);
-            // 
-            // promedioToolStripMenuItem
-            // 
-            this.promedioToolStripMenuItem.Name = "promedioToolStripMenuItem";
-            this.promedioToolStripMenuItem.Size = new System.Drawing.Size(180, 40);
-            this.promedioToolStripMenuItem.Text = "Promedio";
-            this.promedioToolStripMenuItem.Click += new System.EventHandler(this.promedioToolStripMenuItem_Click);
             // 
             // FrmMenu
             // 
