@@ -23,7 +23,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_Docentes());
+            Application.Run(new FrmInicio());
 
         }
     }
