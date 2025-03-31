@@ -38,54 +38,58 @@
             // 
             // dgvMaterias
             // 
+            this.dgvMaterias.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgvMaterias.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMaterias.Location = new System.Drawing.Point(77, 74);
+            this.dgvMaterias.Location = new System.Drawing.Point(205, 82);
             this.dgvMaterias.Name = "dgvMaterias";
-            this.dgvMaterias.Size = new System.Drawing.Size(143, 256);
+            this.dgvMaterias.Size = new System.Drawing.Size(151, 256);
             this.dgvMaterias.TabIndex = 0;
             this.dgvMaterias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMaterias_CellContentClick);
             // 
             // txtMateria
             // 
-            this.txtMateria.Location = new System.Drawing.Point(265, 130);
+            this.txtMateria.Location = new System.Drawing.Point(383, 138);
             this.txtMateria.Name = "txtMateria";
-            this.txtMateria.Size = new System.Drawing.Size(100, 20);
+            this.txtMateria.Size = new System.Drawing.Size(108, 20);
             this.txtMateria.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(264, 114);
+            this.label1.Font = new System.Drawing.Font("Gabriola", 14.25F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(387, 100);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.Size = new System.Drawing.Size(69, 35);
             this.label1.TabIndex = 2;
             this.label1.Text = "Materia";
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(265, 182);
+            this.btnAgregar.BackColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnAgregar.Location = new System.Drawing.Point(393, 190);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(90, 31);
+            this.btnAgregar.Size = new System.Drawing.Size(98, 31);
             this.btnAgregar.TabIndex = 3;
             this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(265, 245);
+            this.btnEliminar.BackColor = System.Drawing.Color.Crimson;
+            this.btnEliminar.Location = new System.Drawing.Point(393, 253);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(90, 36);
+            this.btnEliminar.Size = new System.Drawing.Size(98, 36);
             this.btnEliminar.TabIndex = 4;
             this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // Materias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(406, 374);
+            this.ClientSize = new System.Drawing.Size(848, 469);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.label1);

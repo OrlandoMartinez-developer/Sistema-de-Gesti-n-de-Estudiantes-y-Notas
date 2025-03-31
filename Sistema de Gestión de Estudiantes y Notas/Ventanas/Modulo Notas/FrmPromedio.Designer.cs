@@ -39,7 +39,7 @@
             // 
             this.btnCalcular.BackColor = System.Drawing.Color.MediumSeaGreen;
             this.btnCalcular.Font = new System.Drawing.Font("Gabriola", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalcular.Location = new System.Drawing.Point(138, 229);
+            this.btnCalcular.Location = new System.Drawing.Point(319, 344);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(120, 41);
             this.btnCalcular.TabIndex = 0;
@@ -51,7 +51,7 @@
             // 
             this.cmbEstudiantes.Font = new System.Drawing.Font("Gabriola", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEstudiantes.FormattingEnabled = true;
-            this.cmbEstudiantes.Location = new System.Drawing.Point(115, 109);
+            this.cmbEstudiantes.Location = new System.Drawing.Point(296, 224);
             this.cmbEstudiantes.Name = "cmbEstudiantes";
             this.cmbEstudiantes.Size = new System.Drawing.Size(163, 37);
             this.cmbEstudiantes.TabIndex = 2;
@@ -60,7 +60,7 @@
             // 
             this.lblPromedio.BackColor = System.Drawing.Color.Transparent;
             this.lblPromedio.Font = new System.Drawing.Font("Gabriola", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPromedio.Location = new System.Drawing.Point(41, 28);
+            this.lblPromedio.Location = new System.Drawing.Point(222, 143);
             this.lblPromedio.Name = "lblPromedio";
             this.lblPromedio.Size = new System.Drawing.Size(317, 65);
             this.lblPromedio.TabIndex = 3;
@@ -72,7 +72,7 @@
             // 
             this.cmbCurso.Font = new System.Drawing.Font("Gabriola", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbCurso.FormattingEnabled = true;
-            this.cmbCurso.Location = new System.Drawing.Point(115, 167);
+            this.cmbCurso.Location = new System.Drawing.Point(296, 282);
             this.cmbCurso.Name = "cmbCurso";
             this.cmbCurso.Size = new System.Drawing.Size(163, 37);
             this.cmbCurso.TabIndex = 4;
@@ -83,7 +83,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(421, 327);
+            this.ClientSize = new System.Drawing.Size(792, 532);
             this.Controls.Add(this.cmbCurso);
             this.Controls.Add(this.lblPromedio);
             this.Controls.Add(this.cmbEstudiantes);

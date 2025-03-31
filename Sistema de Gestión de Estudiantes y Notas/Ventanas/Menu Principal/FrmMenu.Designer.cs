@@ -39,7 +39,7 @@
             this.horariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NotasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.graficoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.docentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +52,8 @@
             this.notasToolStripMenuItem,
             this.materiasToolStripMenuItem,
             this.cursosToolStripMenuItem,
-            this.reportesToolStripMenuItem});
+            this.reportesToolStripMenuItem,
+            this.docentesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(848, 43);
@@ -88,7 +89,7 @@
             // promedioToolStripMenuItem
             // 
             this.promedioToolStripMenuItem.Name = "promedioToolStripMenuItem";
-            this.promedioToolStripMenuItem.Size = new System.Drawing.Size(156, 40);
+            this.promedioToolStripMenuItem.Size = new System.Drawing.Size(180, 40);
             this.promedioToolStripMenuItem.Text = "Promedio";
             this.promedioToolStripMenuItem.Click += new System.EventHandler(this.promedioToolStripMenuItem_Click);
             // 
@@ -106,40 +107,41 @@
             this.horariosToolStripMenuItem});
             this.cursosToolStripMenuItem.Font = new System.Drawing.Font("Gabriola", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cursosToolStripMenuItem.Name = "cursosToolStripMenuItem";
-            this.cursosToolStripMenuItem.Size = new System.Drawing.Size(75, 39);
-            this.cursosToolStripMenuItem.Text = "Cursos";
+            this.cursosToolStripMenuItem.Size = new System.Drawing.Size(89, 39);
+            this.cursosToolStripMenuItem.Text = "Horarios";
             this.cursosToolStripMenuItem.Click += new System.EventHandler(this.cursosToolStripMenuItem_Click);
             // 
             // horariosToolStripMenuItem
             // 
             this.horariosToolStripMenuItem.Name = "horariosToolStripMenuItem";
-            this.horariosToolStripMenuItem.Size = new System.Drawing.Size(152, 40);
-            this.horariosToolStripMenuItem.Text = "Horarios";
+            this.horariosToolStripMenuItem.Size = new System.Drawing.Size(180, 40);
+            this.horariosToolStripMenuItem.Text = "Cursos";
             this.horariosToolStripMenuItem.Click += new System.EventHandler(this.horariosToolStripMenuItem_Click);
             // 
             // reportesToolStripMenuItem
             // 
             this.reportesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.NotasToolStripMenuItem1,
-            this.graficoToolStripMenuItem});
+            this.NotasToolStripMenuItem1});
             this.reportesToolStripMenuItem.Font = new System.Drawing.Font("Gabriola", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.reportesToolStripMenuItem.Name = "reportesToolStripMenuItem";
             this.reportesToolStripMenuItem.Size = new System.Drawing.Size(87, 39);
             this.reportesToolStripMenuItem.Text = "Reportes";
+            this.reportesToolStripMenuItem.Click += new System.EventHandler(this.reportesToolStripMenuItem_Click);
             // 
             // NotasToolStripMenuItem1
             // 
             this.NotasToolStripMenuItem1.Name = "NotasToolStripMenuItem1";
-            this.NotasToolStripMenuItem1.Size = new System.Drawing.Size(140, 40);
+            this.NotasToolStripMenuItem1.Size = new System.Drawing.Size(180, 40);
             this.NotasToolStripMenuItem1.Text = "Notas";
             this.NotasToolStripMenuItem1.Click += new System.EventHandler(this.NotasToolStripMenuItem1_Click);
             // 
-            // graficoToolStripMenuItem
+            // docentesToolStripMenuItem
             // 
-            this.graficoToolStripMenuItem.Name = "graficoToolStripMenuItem";
-            this.graficoToolStripMenuItem.Size = new System.Drawing.Size(140, 40);
-            this.graficoToolStripMenuItem.Text = "Grafico";
-            this.graficoToolStripMenuItem.Click += new System.EventHandler(this.graficoToolStripMenuItem_Click);
+            this.docentesToolStripMenuItem.Font = new System.Drawing.Font("Gabriola", 14.25F, System.Drawing.FontStyle.Bold);
+            this.docentesToolStripMenuItem.Name = "docentesToolStripMenuItem";
+            this.docentesToolStripMenuItem.Size = new System.Drawing.Size(89, 39);
+            this.docentesToolStripMenuItem.Text = "Docentes";
+            this.docentesToolStripMenuItem.Click += new System.EventHandler(this.docentesToolStripMenuItem_Click);
             // 
             // FrmMenu
             // 
@@ -170,8 +172,8 @@
         private System.Windows.Forms.ToolStripMenuItem cursosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem NotasToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem graficoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem horariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem promedioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem docentesToolStripMenuItem;
     }
 }

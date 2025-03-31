@@ -16,13 +16,21 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal
 {
     public partial class FrmMenu : Form
     {
+        // Supongamos que tienes una variable que almacena el rol del usuario actual
+        public string rolUsuarioActual = "Admin"; // Reemplaza con tu lógica para obtener el rol
+
         public FrmMenu()
         {
             InitializeComponent();
             this.IsMdiContainer = true;
             this.AutoSize = true;
             this.MinimumSize = new Size(1024, 768); // Tamaño inicial recomendado
-            
+
+            // Ocultar el botón "Docentes" si el usuario es un docente
+            if (rolUsuarioActual == "Docente")     
+            {
+                docentesToolStripMenuItem.Visible = false;
+            }
         }
 
         private void AbrirFormulario(Form formulario)
@@ -52,8 +60,6 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal
 
         private void cursosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Aquí deberías abrir el formulario de Cursos 
-           
             Cursos cursos = new Cursos();
             AbrirFormulario(cursos);
         }
@@ -84,12 +90,8 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal
 
         private void materiasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-        }
-
-        private void NotasToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            
+            Materias materias = new Materias();
+            AbrirFormulario(materias);
         }
 
         private void promedioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -98,9 +100,22 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal
             AbrirFormulario(frmPromedio);
         }
 
-        private void graficoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void docentesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            Form_Docentes Docentes = new Form_Docentes();
+            AbrirFormulario(Docentes);
+        }
+
+        private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReporteDeNotas reporteDeNotas = new ReporteDeNotas();
+           AbrirFormulario(reporteDeNotas);
+        }
+
+        private void NotasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ReporteDeNotas reporteDeNotas = new ReporteDeNotas();
+           AbrirFormulario(reporteDeNotas);
         }
     }
 }
