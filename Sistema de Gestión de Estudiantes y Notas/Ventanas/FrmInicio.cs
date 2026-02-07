@@ -53,8 +53,8 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            string usuario = texusuario.Text;
-            string contrasena = texcontrasena.Text;
+            string usuario = txtUsuario.Text;
+            string contrasena = txtContrasena.Text;
 
             if (AutenticarUsuario(usuario, contrasena, out string tipoUsuario, out int? idDocente))
             {
@@ -83,6 +83,47 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
         private void texusuario_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void FrmInicio_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEntrar_MouseEnter(object sender, EventArgs e)
+        {
+           // throw new NotImplementedException();
+        }
+
+        private void btnEntrar_MouseLeave(object sender, EventArgs e)
+        {
+           // throw new NotImplementedException();
+        }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnEntrar_Click(sender, e);
+            }
+        }
+
+        private void txtContrasena_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnEntrar_Click(sender, e);
+            }
+        }
+
+        private void btnMostrarContrasena_MouseDown(object sender, MouseEventArgs e)
+        {
+            txtContrasena.UseSystemPasswordChar = false;
+        }
+
+        private void btnMostrarContrasena_MouseUp(object sender, MouseEventArgs e)
+        {
+            txtContrasena.UseSystemPasswordChar = true;
         }
     }
 }
