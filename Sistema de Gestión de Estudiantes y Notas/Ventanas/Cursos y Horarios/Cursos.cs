@@ -1,18 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using iTextSharp.text.pdf;
-using iTextSharp.text;
+using CoBD;
 using MySql.Data.MySqlClient;
-using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Notas;
-using TuProyecto;
 
 namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios
 {
@@ -346,7 +339,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios
                 try
                 {
                     iTextSharp.text.Document document = new iTextSharp.text.Document(iTextSharp.text.PageSize.A4.Rotate(), 10, 10, 10, 10);
-                    iTextSharp.text.pdf.PdfWriter.GetInstance(document, new FileStream(saveFileDialog.FileName, FileMode.Create));
+                    iTextSharp.text.pdf.PdfWriter.GetInstance(document, new System.IO.FileStream(saveFileDialog.FileName, FileMode.Create));
                     document.Open();
 
                     iTextSharp.text.Font titleFont = iTextSharp.text.FontFactory.GetFont(

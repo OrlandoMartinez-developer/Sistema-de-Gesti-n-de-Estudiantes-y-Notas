@@ -1,22 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Drawing.Printing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using CoBD;
+using MySql.Data.MySqlClient;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
-using System.Xml.Linq;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-using MySql.Data.MySqlClient;
-using Org.BouncyCastle.Crypto.Engines;
-using TuProyecto;
-
+using System.IO;
 namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Notas
 {
     public partial class ReporteDeNotas : Form
@@ -201,5 +191,9 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Notas
             reporteGraficoForm.ShowDialog();
         }
 
+        internal void ShowDialog()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

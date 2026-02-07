@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenu));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.inicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estudiantesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.promedioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,7 +38,6 @@
             this.horariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.NotasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.docentesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,26 +45,16 @@
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.Azure;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inicioToolStripMenuItem,
             this.estudiantesToolStripMenuItem,
             this.notasToolStripMenuItem,
             this.materiasToolStripMenuItem,
             this.cursosToolStripMenuItem,
-            this.reportesToolStripMenuItem,
-            this.docentesToolStripMenuItem});
+            this.reportesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(848, 43);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // inicioToolStripMenuItem
-            // 
-            this.inicioToolStripMenuItem.Font = new System.Drawing.Font("Gabriola", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.inicioToolStripMenuItem.Name = "inicioToolStripMenuItem";
-            this.inicioToolStripMenuItem.Size = new System.Drawing.Size(66, 39);
-            this.inicioToolStripMenuItem.Text = "Inicio";
-            this.inicioToolStripMenuItem.Click += new System.EventHandler(this.inicioToolStripMenuItem_Click);
             // 
             // estudiantesToolStripMenuItem
             // 
@@ -89,7 +77,7 @@
             // promedioToolStripMenuItem
             // 
             this.promedioToolStripMenuItem.Name = "promedioToolStripMenuItem";
-            this.promedioToolStripMenuItem.Size = new System.Drawing.Size(180, 40);
+            this.promedioToolStripMenuItem.Size = new System.Drawing.Size(156, 40);
             this.promedioToolStripMenuItem.Text = "Promedio";
             this.promedioToolStripMenuItem.Click += new System.EventHandler(this.promedioToolStripMenuItem_Click);
             // 
@@ -114,7 +102,7 @@
             // horariosToolStripMenuItem
             // 
             this.horariosToolStripMenuItem.Name = "horariosToolStripMenuItem";
-            this.horariosToolStripMenuItem.Size = new System.Drawing.Size(180, 40);
+            this.horariosToolStripMenuItem.Size = new System.Drawing.Size(138, 40);
             this.horariosToolStripMenuItem.Text = "Cursos";
             this.horariosToolStripMenuItem.Click += new System.EventHandler(this.horariosToolStripMenuItem_Click);
             // 
@@ -131,17 +119,9 @@
             // NotasToolStripMenuItem1
             // 
             this.NotasToolStripMenuItem1.Name = "NotasToolStripMenuItem1";
-            this.NotasToolStripMenuItem1.Size = new System.Drawing.Size(180, 40);
+            this.NotasToolStripMenuItem1.Size = new System.Drawing.Size(130, 40);
             this.NotasToolStripMenuItem1.Text = "Notas";
             this.NotasToolStripMenuItem1.Click += new System.EventHandler(this.NotasToolStripMenuItem1_Click);
-            // 
-            // docentesToolStripMenuItem
-            // 
-            this.docentesToolStripMenuItem.Font = new System.Drawing.Font("Gabriola", 14.25F, System.Drawing.FontStyle.Bold);
-            this.docentesToolStripMenuItem.Name = "docentesToolStripMenuItem";
-            this.docentesToolStripMenuItem.Size = new System.Drawing.Size(89, 39);
-            this.docentesToolStripMenuItem.Text = "Docentes";
-            this.docentesToolStripMenuItem.Click += new System.EventHandler(this.docentesToolStripMenuItem_Click);
             // 
             // FrmMenu
             // 
@@ -165,7 +145,6 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem inicioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem estudiantesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem notasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem materiasToolStripMenuItem;
@@ -174,6 +153,5 @@
         private System.Windows.Forms.ToolStripMenuItem NotasToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem horariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem promedioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem docentesToolStripMenuItem;
     }
 }

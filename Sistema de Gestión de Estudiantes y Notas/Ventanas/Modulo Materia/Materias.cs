@@ -2,7 +2,8 @@
 using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using TuProyecto;
+using CoBD;
+
 
 namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Materia
 {

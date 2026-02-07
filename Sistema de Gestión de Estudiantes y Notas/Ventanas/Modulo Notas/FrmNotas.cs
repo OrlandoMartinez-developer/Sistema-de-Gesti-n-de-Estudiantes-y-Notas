@@ -1,20 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas;
+using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Notas;
+using System;
+
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using Sistema_de_Gestión_de_Estudiantes_y_Notas;
-using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas;
-using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Notas;
-using TuProyecto;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using CoBD;
 
 namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
 {
     public partial class FrmNotas : Form
     {
         ConexionBD conexionBD = new ConexionBD();
-      
+
 
         public FrmNotas()
         {
@@ -254,7 +251,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
                     return;
                 }
 
-                
+
                 MySqlConnection conexion = conexionBD.Conectar();
 
                 if (conexion != null)

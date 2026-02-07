@@ -1,25 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using CoBD; 
 using MySql.Data.MySqlClient;
+using System.Data;
 using System.Windows.Forms.DataVisualization.Charting;
-using TuProyecto;
 
 namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Notas
 {
     public partial class ReporteGrafico : Form
+
     {
         ConexionBD conexionBD = new ConexionBD();
         public ReporteGrafico(int idEstudiante, int idCurso)
         {
             InitializeComponent();
             GenerarGrafico(idEstudiante, idCurso);
+        }
+
+        internal void ShowDialog()
+        {
+            throw new NotImplementedException();
         }
 
         private void GenerarGrafico(int idEstudiante, int idCurso)

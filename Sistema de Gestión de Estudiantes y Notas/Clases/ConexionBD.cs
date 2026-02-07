@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace TuProyecto
+namespace CoBD
 {
     public class ConexionBD
     {
@@ -21,7 +21,7 @@ namespace TuProyecto
                 if (conexion.State == System.Data.ConnectionState.Closed)
                 {
                     conexion.Open();
-                    
+
                 }
                 return conexion;
             }
@@ -44,7 +44,7 @@ namespace TuProyecto
                 if (conexion.State == System.Data.ConnectionState.Open)
                 {
                     conexion.Close();
-                    
+
                 }
             }
             catch (Exception ex)

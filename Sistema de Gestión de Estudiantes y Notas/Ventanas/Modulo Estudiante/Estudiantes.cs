@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using CoBD;
 using MySql.Data.MySqlClient;
-using TuProyecto;
 
 namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Estudiante
 {
@@ -207,7 +207,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Estudiante
         {
             txtNombre.Clear();
             txtApellido.Clear();
-            
+
             txtCorreo.Clear();
             txtTelefono.Clear();
             txtDireccion.Clear();

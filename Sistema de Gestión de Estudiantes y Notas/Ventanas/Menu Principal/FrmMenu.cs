@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios;
 using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Modulo_Estudiante;
@@ -16,7 +10,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal
 {
     public partial class FrmMenu : Form
     {
-        // Supongamos que tienes una variable que almacena el rol del usuario actual
+      
         public string rolUsuarioActual = "Admin"; // Reemplaza con tu lógica para obtener el rol
 
         public FrmMenu()
@@ -27,10 +21,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal
             this.MinimumSize = new Size(1024, 768); // Tamaño inicial recomendado
 
             // Ocultar el botón "Docentes" si el usuario es un docente
-            if (rolUsuarioActual == "Docente")     
-            {
-                docentesToolStripMenuItem.Visible = false;
-            }
+            
         }
 
         private void AbrirFormulario(Form formulario)
@@ -100,22 +91,17 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal
             AbrirFormulario(frmPromedio);
         }
 
-        private void docentesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form_Docentes Docentes = new Form_Docentes();
-            AbrirFormulario(Docentes);
-        }
 
         private void reportesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ReporteDeNotas reporteDeNotas = new ReporteDeNotas();
-           AbrirFormulario(reporteDeNotas);
+            AbrirFormulario(reporteDeNotas);
         }
 
         private void NotasToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ReporteDeNotas reporteDeNotas = new ReporteDeNotas();
-           AbrirFormulario(reporteDeNotas);
+            AbrirFormulario(reporteDeNotas);
         }
     }
 }

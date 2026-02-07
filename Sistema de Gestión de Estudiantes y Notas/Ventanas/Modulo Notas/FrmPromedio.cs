@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Windows.Forms;
+using CoBD;
 using MySql.Data.MySqlClient;
-using TuProyecto;
+
 
 namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas
 {
@@ -13,7 +13,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas
 
         public FrmPromedio()
         {
-         
+
             InitializeComponent();
             CargarEstudiantes(cmbEstudiantes);
             CargarCursos(cmbCurso);
@@ -146,6 +146,11 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas
         private void lblPromedio_Click(object sender, EventArgs e)
         {
 
+        }
+
+        internal void ShowDialog()
+        {
+            throw new NotImplementedException();
         }
     }
 

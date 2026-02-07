@@ -1,9 +1,7 @@
-﻿using MySql.Data.MySqlClient;
-using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios;
-using Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Menu_Principal;
-using System;
+﻿using System;
 using System.Windows.Forms;
-using TuProyecto;
+using CoBD;
+using MySql.Data.MySqlClient;
 
 namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
 {
@@ -26,7 +24,7 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas
             {
                 try
                 {
-                    
+
                     using (var cmd = new MySqlCommand(query, connection))
                     {
                         cmd.Parameters.AddWithValue("@usuario", usuario);

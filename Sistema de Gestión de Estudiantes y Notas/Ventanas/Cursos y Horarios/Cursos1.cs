@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Windows.Forms;
+using CoBD;
 using MySql.Data.MySqlClient;
-using TuProyecto;
 
 namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios
 {
@@ -258,5 +258,9 @@ namespace Sistema_de_Gestión_de_Estudiantes_y_Notas.Ventanas.Cursos_y_Horarios
 
         }
 
+        internal void ShowDialog()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
